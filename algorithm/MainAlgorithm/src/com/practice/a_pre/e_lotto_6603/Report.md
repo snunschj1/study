@@ -120,4 +120,5 @@ A : 0 0 0 0 0 0 1
     1 0 0 0 0 0 0
 </pre>
 
-
+---
+Link : [BOJ 6603](https://www.acmicpc.net/problem/6603 "로또")
