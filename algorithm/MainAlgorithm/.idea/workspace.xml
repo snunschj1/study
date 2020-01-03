@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-172">
-              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            <state relative-caret-position="202">
+              <caret line="45" column="69" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -205,7 +206,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578045243792" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578045698375" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -288,12 +289,12 @@
       <option name="presentableId" value="Default" />
       <updated>1577768667969</updated>
       <workItem from="1577768671155" duration="1755000" />
-      <workItem from="1577771074665" duration="22996000" />
+      <workItem from="1577771074665" duration="23256000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24751000" />
+    <option name="totallyTimeSpent" value="25011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="608" y="25" width="1262" height="1130" extended-state="0" />
@@ -523,8 +524,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-172">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        <state relative-caret-position="202">
+          <caret line="45" column="69" selection-start-line="45" selection-start-column="69" selection-end-line="45" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
