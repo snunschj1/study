@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="140" column="19" lean-forward="true" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
+            <state relative-caret-position="380">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="196">
+              <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,8 +143,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="119" />
-    <option name="y" value="38" />
+    <option name="x" value="249" />
+    <option name="y" value="32" />
     <option name="width" value="1262" />
     <option name="height" value="1130" />
   </component>
@@ -215,7 +216,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578051902345" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578053342682" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -312,15 +313,15 @@
       <option name="presentableId" value="Default" />
       <updated>1577768667969</updated>
       <workItem from="1577768671155" duration="1755000" />
-      <workItem from="1577771074665" duration="28872000" />
+      <workItem from="1577771074665" duration="30477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30627000" />
+    <option name="totallyTimeSpent" value="32232000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="119" y="38" width="1262" height="1130" extended-state="0" />
+    <frame x="249" y="32" width="1262" height="1130" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22868852" />
@@ -547,8 +548,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="140" column="19" lean-forward="true" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
+        <state relative-caret-position="380">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -557,8 +558,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="196">
+          <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
