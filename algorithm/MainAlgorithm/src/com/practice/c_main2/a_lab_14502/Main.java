@@ -35,6 +35,7 @@ public class Main {
         }
 
         int ans = 0;
+        boolean isBuildingWallsCompleted = true;
 
         do {
             // Todo : 새로운 벽 3개 세우기
@@ -42,7 +43,18 @@ public class Main {
                 int mx = a[i] / m;
                 int my = a[i] % m;
 
+                /** 해당 좌표가 바이러스(2) 이거나 기존 벽(1) 인 경우, 반복문 넘어가야 한다. **/
+                if (map[mx][my] != 0) {
+                    isBuildingWallsCompleted = false;
+                    break;
+                }
+
                 map[mx][my] = 1;
+            }
+
+            if (!isBuildingWallsCompleted) {
+                isBuildingWallsCompleted = true;
+                continue;
             }
 
             Queue<Pair> q = new LinkedList<>();
