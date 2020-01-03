@@ -20,6 +20,8 @@ public class Main {
 
         int[][] map = new int[n][m];
 
+        int[][] tmpMap;
+
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
@@ -38,18 +40,27 @@ public class Main {
         boolean isBuildingWallsCompleted = true;
 
         do {
-            // Todo : 새로운 벽 3개 세우기
-            for (int i = 0; i < 3; i++) {
-                int mx = a[i] / m;
-                int my = a[i] % m;
-
-                /** 해당 좌표가 바이러스(2) 이거나 기존 벽(1) 인 경우, 반복문 넘어가야 한다. **/
-                if (map[mx][my] != 0) {
-                    isBuildingWallsCompleted = false;
-                    break;
+            tmpMap = new int[n][m];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < m; j++) {
+                    tmpMap[i][j] = map[i][j];
                 }
+            }
 
-                map[mx][my] = 1;
+            // Todo : 새로운 벽 3개 세우기
+            for (int i = 0; i < n * m; i++) {
+                if (a[i] == 1) {
+                    int mx = i / m;
+                    int my = i % m;
+
+                    /** 해당 좌표가 바이러스(2) 이거나 기존 벽(1) 인 경우, 반복문 넘어가야 한다. **/
+                    if (map[mx][my] != 0) {
+                        isBuildingWallsCompleted = false;
+                        break;
+                    }
+
+                    tmpMap[mx][my] = 1;
+                }
             }
 
             if (!isBuildingWallsCompleted) {
@@ -60,7 +71,7 @@ public class Main {
             Queue<Pair> q = new LinkedList<>();
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
-                    if (map[i][j] == 2) {
+                    if (tmpMap[i][j] == 2) {
                         q.add(new Pair(i, j));
                     }
                 }
@@ -80,9 +91,9 @@ public class Main {
                         continue;
                     }
 
-                    if (map[nx][ny] == 0) {
+                    if (tmpMap[nx][ny] == 0) {
                         q.add(new Pair(nx, ny));
-                        map[nx][ny] = 2;
+                        tmpMap[nx][ny] = 2;
                     }
                 }
             }
@@ -91,7 +102,7 @@ public class Main {
             int tmp = 0;
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
-                    if (map[i][j] == 0) {
+                    if (tmpMap[i][j] == 0) {
                         tmp += 1;
                     }
                 }
