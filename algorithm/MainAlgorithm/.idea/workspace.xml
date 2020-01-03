@@ -34,11 +34,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-270">
-              <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+            <state relative-caret-position="469">
+              <caret line="140" column="19" lean-forward="true" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,18 +112,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1011">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -137,12 +137,13 @@
         <option value="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main2.java" />
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="608" />
-    <option name="y" value="25" />
+    <option name="x" value="119" />
+    <option name="y" value="38" />
     <option name="width" value="1262" />
     <option name="height" value="1130" />
   </component>
@@ -196,6 +197,15 @@
               <item name="c_main2" type="462c0819:PsiDirectoryNode" />
               <item name="a_lab_14502" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="c_main2" type="462c0819:PsiDirectoryNode" />
+              <item name="a_lab_14502" type="462c0819:PsiDirectoryNode" />
+              <item name="Main.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -205,7 +215,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578046841219" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578051902345" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -219,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.Main2 (1)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.practice.a_pre.e_lotto_6603.Main" />
       <module name="MainAlgorithm" />
@@ -256,6 +266,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.a_lab_14502.Main2" />
+      <module name="MainAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.practice.c_main2.a_lab_14502.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.practice.a_pre.h_tetromino_14500.Main2" />
       <module name="MainAlgorithm" />
@@ -271,6 +294,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2 (1)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Main (1)" />
@@ -288,17 +312,18 @@
       <option name="presentableId" value="Default" />
       <updated>1577768667969</updated>
       <workItem from="1577768671155" duration="1755000" />
-      <workItem from="1577771074665" duration="24137000" />
+      <workItem from="1577771074665" duration="28872000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25892000" />
+    <option name="totallyTimeSpent" value="30627000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="608" y="25" width="1262" height="1130" extended-state="0" />
+    <frame x="119" y="38" width="1262" height="1130" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22868852" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22868852" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -309,7 +334,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3603083" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3603083" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39980733" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -522,8 +547,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+        <state relative-caret-position="469">
+          <caret line="140" column="19" lean-forward="true" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
