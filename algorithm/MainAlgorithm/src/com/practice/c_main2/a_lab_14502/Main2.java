@@ -30,7 +30,7 @@ public class Main2 {
         System.out.println(solve());
     }
 
-    private static void inputData() throws IOException{
+    private static void inputData() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
@@ -52,12 +52,15 @@ public class Main2 {
         return maxCountOfSafetyAreas;
     }
 
+    // Todo : 새로운 벽 3개를 건설 - 재귀를 활용한 dfs
     private static void buildWalls(int startIndex) {
         if (chanceOfBuildingWalls == 0) {
+            // 벽 3개 건설 완료
             copyMap();
 
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < m; j++) {
+                    // Todo : 바이러스 퍼지기 - dfs 처리
                     if (map[i][j] == VIRUS) {
                         spreadVirus(i, j);
                     }
@@ -70,14 +73,14 @@ public class Main2 {
 
         for (int i = startIndex; i < n * m; i++) {
             int row = i / m;
-                int col = i % m;
+            int col = i % m;
 
-                if (map[row][col] == EMPTY) {
-                    map[row][col] = WALL;
-                    chanceOfBuildingWalls--;
-                    buildWalls(i + 1);
-                    chanceOfBuildingWalls++;
-                    map[row][col] = EMPTY;
+            if (map[row][col] == EMPTY) {
+                map[row][col] = WALL;
+                chanceOfBuildingWalls--;
+                buildWalls(i + 1);
+                chanceOfBuildingWalls++;
+                map[row][col] = EMPTY;
             }
         }
     }
