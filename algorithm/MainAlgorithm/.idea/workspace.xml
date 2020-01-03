@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="" />
+    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +30,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Report.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor>
-                <caret selection-end-line="122" />
+              <first_editor relative-caret-position="664">
+                <caret line="123" column="60" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
               </first_editor>
               <second_editor />
             </state>
@@ -65,12 +68,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/b_main1/c_robovac_14503/Report.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="664">
-                <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+                <caret line="184" column="64" selection-start-line="184" selection-end-line="184" selection-end-column="64" />
               </first_editor>
               <second_editor />
             </state>
@@ -86,20 +89,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="-36">
+              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/i_resign_14501/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="-1011">
+              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,8 +127,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Markdown" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -131,18 +140,20 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/practice/a_pre/a_kevin_1389/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Report.md" />
         <option value="$PROJECT_DIR$/src/com/practice/b_main1/a_examsuperv_13458/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/b_main1/c_robovac_14503/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/b_main1/c_robovac_14503/Report.md" />
+        <option value="$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Report.md" />
+        <option value="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="273" />
-    <option name="y" value="60" />
+    <option name="x" value="462" />
+    <option name="y" value="80" />
     <option name="width" value="1356" />
-    <option name="height" value="1094" />
+    <option name="height" value="1177" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -192,6 +203,14 @@
               <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="a_pre" type="462c0819:PsiDirectoryNode" />
+              <item name="h_tetromino_14500" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
               <item name="b_main1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -220,7 +239,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577786033143" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577959377138" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -234,7 +253,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main2">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.practice.a_pre.e_lotto_6603.Main" />
       <module name="MainAlgorithm" />
@@ -258,8 +277,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.practice.a_pre.h_tetromino_14500.Main2" />
+      <module name="MainAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.practice.a_pre.h_tetromino_14500.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
@@ -275,18 +308,18 @@
       <option name="presentableId" value="Default" />
       <updated>1577768667969</updated>
       <workItem from="1577768671155" duration="1755000" />
-      <workItem from="1577771074665" duration="10426000" />
+      <workItem from="1577771074665" duration="14798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12181000" />
+    <option name="totallyTimeSpent" value="16553000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="548" y="30" width="1356" height="1094" extended-state="0" />
+    <frame x="462" y="80" width="1356" height="1177" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.060121767" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21232876" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -297,7 +330,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.16866267" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.44884792" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -371,13 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/i_resign_14501/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -433,23 +459,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Report.md">
+    <entry file="file://$PROJECT_DIR$/src/com/practice/b_main1/c_robovac_14503/Report.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor>
-            <caret selection-end-line="122" />
+          <first_editor relative-caret-position="664">
+            <caret line="184" column="64" selection-start-line="184" selection-end-line="184" selection-end-column="64" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/b_main1/c_robovac_14503/Report.md">
+    <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/e_lotto_6603/Report.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="664">
-            <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+            <caret line="123" column="60" selection-start-line="123" selection-start-column="60" selection-end-line="123" selection-end-column="60" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1011">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/a_pre/h_tetromino_14500/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
