@@ -68,42 +68,43 @@ public class Main {
             return check();
         }
 
-        int r = index / (col - 1);
-        int c = index % (col - 1);
+        for (int idx = index; idx < row * (col-1); idx++) {
+            int i = idx / (col - 1);
+            int j = idx % (col - 1);
 
-        for (int i = r; i < row; i++) {
-            for (int j = c; j < col - 1; j++) {
-                if (ladders[i][j] == NON_EXIST) {
-                    if (1 <= j && j < col && ladders[i][j-1] == EXIST) {
-                        continue;
-                    }
+//            System.out.printf("index = %d, i = %d, j = %d\n", idx, i , j);
 
-                    if (j < col - 2 && ladders[i][j + 1] == EXIST) {
-                        continue;
-                    }
-
-                    ladders[i][j] = EXIST;
-                    map.get(j)[i] = j + 1;
-                    map.get(j+1)[i] = j;
-
-                    int nd = i * (col - 1) + j + 1;
-
-                    if(addLine(--cntLine, nd)) {
-                        return true;
-                    }
-                    ++cntLine;
-                    ladders[i][j] = NON_EXIST;
-                    map.get(j)[i] = -1;
-                    map.get(j+1)[i] = -1;
-
+            if (ladders[i][j] == NON_EXIST) {
+                if (1 <= j && j < col && ladders[i][j-1] == EXIST) {
+                    continue;
                 }
+
+                if (j < col - 2 && ladders[i][j + 1] == EXIST) {
+                    continue;
+                }
+
+                ladders[i][j] = EXIST;
+                map.get(j)[i] = j + 1;
+                map.get(j+1)[i] = j;
+
+                int nd = i * (col - 1) + j + 1;
+
+                if(addLine(--cntLine, nd)) {
+                    return true;
+                }
+                ++cntLine;
+                ladders[i][j] = NON_EXIST;
+                map.get(j)[i] = -1;
+                map.get(j+1)[i] = -1;
+
             }
         }
+
         return false;
     }
 
     private static boolean check() {
-        print();
+//        print();
 
         for (int i = 0; i < col; i++) {
             if (i != goDown(i, -1)) {
@@ -113,15 +114,15 @@ public class Main {
         return true;
     }
 
-    private static void print() {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col - 1; j++) {
-                System.out.print(ladders[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
+//    private static void print() {
+//        for (int i = 0; i < row; i++) {
+//            for (int j = 0; j < col - 1; j++) {
+//                System.out.print(ladders[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//    }
 
     private static int goDown(int curCol, int curRow) {
         if (curRow == row) {
