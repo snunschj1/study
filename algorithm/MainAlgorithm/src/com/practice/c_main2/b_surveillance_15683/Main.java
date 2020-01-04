@@ -107,16 +107,27 @@ public class Main {
             int row = p.row;
             int col = p.col;
 
+            /**
+             * 해당 cctv의 가능한 감시 방법들이 dirsOfCertainCCTV에 들어있다.
+             *
+             * ex. CCTV2의 경우
+             * {{0, 1}, {1, 2}, {2, 3}, {3, 0}}
+             */
             int[][] dirsOfCertainCCTV = cctvDirs[cctv - 1];
 
+            // Todo : 해당 cctv의 가능한 감시 방법들을 하나씩 해본다.
+            // ex. CCTV2의 경우
+            // {0, 1} -> {1, 2} -> {2, 3} -> {3, 0}
             for (int i = 0; i < dirsOfCertainCCTV.length; i++) {
                 int[] dirs = dirsOfCertainCCTV[i];
 
+                // 해당 CCTV에 의해 EMPTY -> SURV 로 바뀔 좌표들을 pairs 리스트에 저장한다.
                 ArrayList<Pair> pairs = new ArrayList<>();
                 for (int j = 0; j < dirs.length; j++) {
                     moveForSurv(row, col, dirs[j], pairs);
                 }
 
+                // EMPTY > SURV로 장소 정보를 바꾼다.
                 for (int j = 0; j < pairs.size(); j++) {
                     int tmpRow = pairs.get(j).row;
                     int tmpCol = pairs.get(j).col;
@@ -124,9 +135,10 @@ public class Main {
                     map[tmpRow][tmpCol] = SURV;
                 }
 
+                // Todo : 이번 cctv에서 EMPTY > SURV로 바꾼 좌표 개수 정보를 담고, 다음 cctv로 넘어간다.
                 findMinRemainedEMPTY(index+1, cntSurv + pairs.size());
 
-
+                // 장소 정보를 다시 SURV -> EMPTY로 바꾼다.
                 for (int j = 0; j < pairs.size(); j++) {
                     int tmpRow = pairs.get(j).row;
                     int tmpCol = pairs.get(j).col;
@@ -138,7 +150,7 @@ public class Main {
     }
 
     private static void moveForSurv(int row, int col, int dir, ArrayList<Pair> pairs) {
-
+        // Todo : 해당 CCTV가 한 번에 EMPTY > SURV 로 바꾸는 좌표가 무엇인지 찾는 로직
         int nr = row + dr[dir];
         int nc = col + dc[dir];
 
