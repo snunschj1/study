@@ -44,47 +44,63 @@ public class Main {
     }
 
     private static int movePopulation() {
-        boolean repeat;
-
         int result = -1;
 
-        do {
+        while(true) {
             ++result;
-            repeat = false;
             check = new int[n][n];
 
             int cnt = 0;
             ArrayList<Integer> arr = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (check[i][j] == 0) {
+                    if (check[i][j] == 0 && isAvailableBfs(i, j)) {
                         int tmp = bfs(cnt + 1, i, j);
 
-                        if (tmp != 0) {
-                            arr.add(tmp);
-                            ++cnt;
-                        }
+                        arr.add(tmp);
+                        ++cnt;
                     }
-
                 }
             }
+
+            if (cnt == 0) {
+                break;
+            }
+
 
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (cnt > 0 && check[i][j] != 0 && check[i][j] != -1) {
+                    if (check[i][j] != -1) {
                         int tmp = check[i][j];
                         map[i][j] = arr.get(tmp - 1);
-                    }
-
-                    if (check[i][j] != -1) {
-                        repeat = true;
                     }
                 }
             }
 
-        } while (repeat);
+        }
 
         return result;
+    }
+
+    private static boolean isAvailableBfs(int row, int col) {
+        for (int i = 0; i < 4; i++) {
+            int nr = row + dr[i];
+            int nc = col + dc[i];
+
+            if (0 > nr || nr >= n || 0 > nc || nc >= n) {
+                continue;
+            }
+
+            if (check[nr][nc] == 0) {
+                int diff = Math.abs(map[nr][nc] - map[row][col]);
+
+                if (left <= diff && diff <= right) {
+                    return true;
+                }
+            }
+        }
+        check[row][col] = -1;
+        return false;
     }
 
     private static int bfs(int cnt, int row, int col) {
@@ -121,14 +137,7 @@ public class Main {
             }
         }
 
-        if (count == 1) {
-            check[row][col] = -1;
-            return 0;
-        } else {
-            return sum / count;
-        }
-
-
+        return sum / count;
     }
 
     private static int s2i(String s) {
