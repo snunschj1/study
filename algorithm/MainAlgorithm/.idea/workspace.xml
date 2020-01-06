@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,10 +28,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="360">
+              <caret line="91" column="21" lean-forward="true" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1556">
+              <caret line="116" column="21" lean-forward="true" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3390#3391#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +53,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
+            <state relative-caret-position="-541">
               <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -54,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="112" column="28" lean-forward="true" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+            <state relative-caret-position="1364">
+              <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+            <state relative-caret-position="191">
+              <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5248#5249#0" expanded="true" />
@@ -85,24 +96,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1287">
-              <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            <state relative-caret-position="-101">
+              <caret line="29" column="34" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3653#3654#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/d_dragoncurve_15685/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -163,13 +165,14 @@
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java" />
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="342" />
-    <option name="y" value="55" />
-    <option name="width" value="1473" />
+    <option name="x" value="858" />
+    <option name="y" value="42" />
+    <option name="width" value="985" />
     <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -219,6 +222,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
               <item name="c_main2" type="462c0819:PsiDirectoryNode" />
+              <item name="b_surveillance_15683" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="c_main2" type="462c0819:PsiDirectoryNode" />
+              <item name="b_surveillance_15683" type="462c0819:PsiDirectoryNode" />
+              <item name="Main.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="c_main2" type="462c0819:PsiDirectoryNode" />
               <item name="c_ladder_15684" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -231,7 +251,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578147621995" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578155458867" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,18 +353,18 @@
       <updated>1577768667969</updated>
       <workItem from="1577768671155" duration="1755000" />
       <workItem from="1577771074665" duration="31490000" />
-      <workItem from="1578061364130" duration="28398000" />
+      <workItem from="1578061364130" duration="33869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61643000" />
+    <option name="totallyTimeSpent" value="67114000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="342" y="55" width="1473" height="1085" extended-state="0" />
+    <frame x="858" y="42" width="985" height="1085" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1977638" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23223753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -354,7 +374,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3736153" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26485398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39980733" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -561,7 +581,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
+        <state relative-caret-position="-541">
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -571,8 +591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="360">
+          <caret line="91" column="21" lean-forward="true" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -581,8 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="191">
+          <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5248#5249#0" expanded="true" />
@@ -592,8 +612,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="112" column="28" lean-forward="true" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
+        <state relative-caret-position="1364">
+          <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -602,11 +622,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1287">
-          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state relative-caret-position="-101">
+          <caret line="29" column="34" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3653#3654#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1556">
+          <caret line="116" column="21" lean-forward="true" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3390#3391#0" expanded="true" />
           </folding>
         </state>
       </provider>
