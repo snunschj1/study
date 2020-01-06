@@ -1,5 +1,6 @@
 package com.practice.c_main2.f_movpop_16234;
 
+<<<<<<< HEAD
 import java.util.*;
 import java.io.*;
 
@@ -145,3 +146,7 @@ class Pair {
         this.c = c;
     }
 }
+=======
+public class Main {
+}
+>>>>>>> eb268240dd04b19daf42fc53d8ff1ef26ca1bbc4
