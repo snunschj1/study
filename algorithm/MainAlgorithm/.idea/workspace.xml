@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="" />
+    <list default="true" id="e036942b-5f35-4695-8ac8-4c9dd3961580" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,24 +29,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="91" column="21" lean-forward="true" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1556">
-              <caret line="116" column="21" lean-forward="true" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+            <state relative-caret-position="916">
+              <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3348#3349#0" expanded="true" />
                 <element signature="e#3390#3391#0" expanded="true" />
               </folding>
             </state>
@@ -53,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-541">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            <state relative-caret-position="240">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1364">
-              <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
+            <state relative-caret-position="1590">
+              <caret line="107" column="28" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,10 +69,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="2505">
               <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5206#5207#0" expanded="true" />
                 <element signature="e#5248#5249#0" expanded="true" />
               </folding>
             </state>
@@ -90,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/StringTokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
+            <state relative-caret-position="4815">
               <caret line="348" selection-start-line="348" selection-end-line="348" />
             </state>
           </provider>
@@ -99,10 +92,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
-              <caret line="29" column="34" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
+            <state relative-caret-position="420">
+              <caret line="29" column="34" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3611#3612#0" expanded="true" />
                 <element signature="e#3653#3654#0" expanded="true" />
               </folding>
             </state>
@@ -112,8 +106,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="2925">
+              <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5492#5493#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1987">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5449#5450#0" expanded="true" />
+                <element signature="e#5491#5492#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +158,13 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>System.out</find>
+      <find>System.out.println</find>
+      <find>System.out.print</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -166,13 +185,15 @@
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java" />
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java" />
         <option value="$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java" />
+        <option value="$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main2.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="858" />
-    <option name="y" value="42" />
-    <option name="width" value="985" />
+    <option name="x" value="441" />
+    <option name="y" value="71" />
+    <option name="width" value="1439" />
     <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -183,6 +204,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -201,13 +223,6 @@
               <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="practice" type="462c0819:PsiDirectoryNode" />
-              <item name="a_pre" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
@@ -241,17 +256,33 @@
               <item name="c_main2" type="462c0819:PsiDirectoryNode" />
               <item name="c_ladder_15684" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="c_main2" type="462c0819:PsiDirectoryNode" />
+              <item name="e_deliverychic_15686" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MainAlgorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MainAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="c_main2" type="462c0819:PsiDirectoryNode" />
+              <item name="e_deliverychic_15686" type="462c0819:PsiDirectoryNode" />
+              <item name="Main.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578155458867" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578302378555" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -265,13 +296,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.a_lab_14502.Main" />
+  <component name="RunManager" selected="Application.Main2">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.e_deliverychic_15686.Main" />
       <module name="MainAlgorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.practice.c_main2.a_lab_14502.*" />
+          <option name="PATTERN" value="com.practice.c_main2.e_deliverychic_15686.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -305,19 +336,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main2 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.a_lab_14502.Main2" />
-      <module name="MainAlgorithm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.practice.c_main2.a_lab_14502.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main2 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.b_surveillance_15683.Main2" />
       <module name="MainAlgorithm" />
@@ -331,13 +349,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.practice.c_main2.e_deliverychic_15686.Main2" />
+      <module name="MainAlgorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.practice.c_main2.e_deliverychic_15686.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main2 (2)" />
         <item itemvalue="Application.Main (3)" />
-        <item itemvalue="Application.Main2 (1)" />
-        <item itemvalue="Application.Main (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -354,17 +385,18 @@
       <workItem from="1577768671155" duration="1755000" />
       <workItem from="1577771074665" duration="31490000" />
       <workItem from="1578061364130" duration="33869000" />
+      <workItem from="1578293169520" duration="9124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67114000" />
+    <option name="totallyTimeSpent" value="76238000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="858" y="42" width="985" height="1085" extended-state="0" />
+    <frame x="419" y="88" width="1439" height="1085" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23223753" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22763063" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -374,7 +406,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26485398" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26485398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39980733" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -551,10 +583,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="1350">
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1590">
+          <caret line="107" column="28" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2505">
+          <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5206#5207#0" expanded="true" />
+            <element signature="e#5248#5249#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/StringTokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4815">
+          <caret line="348" selection-start-line="348" selection-end-line="348" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="29" column="34" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3611#3612#0" expanded="true" />
+            <element signature="e#3653#3654#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -572,72 +658,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/StringTokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="348" selection-start-line="348" selection-end-line="348" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-541">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/a_lab_14502/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="91" column="21" lean-forward="true" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="170" column="6" selection-start-line="170" selection-start-column="6" selection-end-line="170" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5248#5249#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/b_surveillance_15683/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1364">
-          <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="29" column="34" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="29" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/c_ladder_15684/Main2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1556">
-          <caret line="116" column="21" lean-forward="true" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
+        <state relative-caret-position="916">
+          <caret line="116" column="21" selection-start-line="116" selection-start-column="21" selection-end-line="116" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
             <element signature="e#3390#3391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2925">
+          <caret line="195" column="50" lean-forward="true" selection-start-line="195" selection-start-column="50" selection-end-line="195" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5492#5493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/practice/c_main2/e_deliverychic_15686/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1987">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5449#5450#0" expanded="true" />
+            <element signature="e#5491#5492#0" expanded="true" />
           </folding>
         </state>
       </provider>
