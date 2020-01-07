@@ -8,9 +8,7 @@ public class Main {
     private static int[] dr = {-1, -1, -1, 0, 0, 1, 1, 1};
     private static int[] dc = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-    private static int N;
-    private static int M;
-    private static int K;
+    private static int N, M, K;
 
     private static int[][] map;
     private static int[][] a;
@@ -51,7 +49,6 @@ public class Main {
         remainedTrees = new ArrayDeque<>();
         deadTrees = new ArrayDeque<>();
 
-        Pair[] tmp = new Pair[M];
         for (int m = 0; m < M; m++) {
             st = new StringTokenizer(br.readLine());
 
@@ -59,13 +56,7 @@ public class Main {
             int col = s2i(st.nextToken()) - 1;
             int age = s2i(st.nextToken());
 
-            tmp[m] = new Pair(row, col, age);
-        }
-
-        Arrays.sort(tmp);
-
-        for (int m = 0; m < M; m++) {
-            d.addLast(tmp[m]);
+            d.add(new Pair(row, col, age));
         }
 
 //        for (int i = 0; i < d.size(); i++) {
@@ -174,23 +165,12 @@ public class Main {
     }
 }
 
-class Pair implements Comparable<Pair> {
+class Pair {
     int r, c, age;
 
     Pair(int r, int c, int age) {
         this.r = r;
         this.c = c;
         this.age = age;
-    }
-
-    @Override
-    public int compareTo(Pair o) {
-        if (this.age == o.age) {
-            if (this.c == o.c) {
-                return Integer.compare(this.r, o.r);
-            }
-            return Integer.compare(this.c, o.c);
-        }
-        return Integer.compare(this.age, o.age);
     }
 }
