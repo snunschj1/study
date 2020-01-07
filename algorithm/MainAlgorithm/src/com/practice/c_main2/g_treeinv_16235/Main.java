@@ -105,22 +105,6 @@ public class Main {
     }
 
     private static void spring() {
-        nourishment();
-    }
-
-    private static void summer() {
-        fertilizer();
-    }
-
-    private static void fall() {
-        addTree();
-    }
-
-    private static void winter() {
-        addNutrient();
-    }
-
-    private static void nourishment() {
         while (!d.isEmpty()) {
             Pair p = d.removeFirst();
 
@@ -137,7 +121,7 @@ public class Main {
         }
     }
 
-    private static void fertilizer() {
+    private static void summer() {
         while (!deadTrees.isEmpty()) {
             Pair dead = deadTrees.removeFirst();
             int dr = dead.r;
@@ -148,7 +132,7 @@ public class Main {
         }
     }
 
-    private static void addTree() {
+    private static void fall() {
         while (!remainedTrees.isEmpty()) {
             Pair p = remainedTrees.removeFirst();
 
@@ -173,7 +157,7 @@ public class Main {
         }
     }
 
-    private static void addNutrient() {
+    private static void winter() {
         for (int r = 0; r < N; r++) {
             for (int c = 0; c < N; c++) {
                 map[r][c] += a[r][c];
