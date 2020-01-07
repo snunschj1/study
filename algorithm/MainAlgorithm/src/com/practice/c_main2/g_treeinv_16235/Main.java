@@ -107,7 +107,7 @@ public class Main {
                 int tAge = p.age;
 
                 if (map[tr][tc] - tAge < 0) {
-                    Pair dead = d[r].removeFirst();
+                    Pair dead = d[r].remove(s);
                     s--;
                     deadTrees.addLast(dead);
                 } else {
@@ -158,6 +158,10 @@ public class Main {
                         }
 
                         d[nr].addFirst(new Pair(nr, nc, 1));
+
+                        if (nr == r) {
+                            s++;
+                        }
                     }
                 }
             }
