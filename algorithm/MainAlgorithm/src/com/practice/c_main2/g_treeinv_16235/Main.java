@@ -47,9 +47,9 @@ public class Main {
             }
         }
 
-        d = new LinkedList<>();
-        remainedTrees = new LinkedList<>();
-        deadTrees = new LinkedList<>();
+        d = new ArrayDeque<>();
+        remainedTrees = new ArrayDeque<>();
+        deadTrees = new ArrayDeque<>();
 
         Pair[] tmp = new Pair[M];
         for (int m = 0; m < M; m++) {
