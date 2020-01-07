@@ -15,7 +15,8 @@ public class Main {
     private static int[][] map;
     private static int[][] a;
 
-    private static LinkedList<Pair>[] d;
+    private static Deque<Pair> d;
+    private static Deque<Pair> remainedTrees;
     private static Deque<Pair> deadTrees;
 
     public static void main(String[] args) throws Exception {
@@ -46,11 +47,11 @@ public class Main {
             }
         }
 
-        d = new LinkedList[N];
-        for (int r = 0; r < N; r++) {
-            d[r] = new LinkedList<>();
-        }
+        d = new LinkedList<>();
+        remainedTrees = new LinkedList<>();
+        deadTrees = new LinkedList<>();
 
+        Pair[] tmp = new Pair[M];
         for (int m = 0; m < M; m++) {
             st = new StringTokenizer(br.readLine());
 
@@ -58,22 +59,46 @@ public class Main {
             int col = s2i(st.nextToken()) - 1;
             int age = s2i(st.nextToken());
 
-            d[row].add(new Pair(row, col, age));
+            tmp[m] = new Pair(row, col, age);
         }
 
-        for (int r = 0; r < N; r++) {
-            Collections.sort(d[r]);
+        Arrays.sort(tmp);
+
+        for (int m = 0; m < M; m++) {
+            d.addLast(tmp[m]);
         }
 
-        deadTrees = new ArrayDeque<>();
+//        for (int i = 0; i < d.size(); i++) {
+//            System.out.printf("Tree : row = %d col = %d age = %d\n", d.get(i).r, d.get(i).c, d.get(i).age);
+//        }
+
     }
 
     private static void solve() {
-        while(K-- > 0) {
+        while (K-- > 0) {
             spring();
+
+//            for (int i = 0; i < d.size(); i++) {
+//                System.out.printf("%d년 남음 After Spring Tree : row = %d col = %d age = %d\n", K, d.get(i).r, d.get(i).c, d.get(i).age);
+//            }
+
             summer();
+
+//            for (int i = 0; i < d.size(); i++) {
+//                System.out.printf("%d년 남음 After Summer Tree : row = %d col = %d age = %d\n", K, d.get(i).r, d.get(i).c, d.get(i).age);
+//            }
+
             fall();
+
+//            for (int i = 0; i < d.size(); i++) {
+//                System.out.printf("%d년 남음 After fall Tree : row = %d col = %d age = %d\n", K, d.get(i).r, d.get(i).c, d.get(i).age);
+//            }
+
             winter();
+
+//            for (int i = 0; i < d.size(); i++) {
+//                System.out.printf("%d년 남음 After winter Tree : row = %d col = %d age = %d\n", K, d.get(i).r, d.get(i).c, d.get(i).age);
+//            }
         }
 
         System.out.println(countAliveTree());
@@ -81,7 +106,6 @@ public class Main {
 
     private static void spring() {
         nourishment();
-        getOlder();
     }
 
     private static void summer() {
@@ -97,32 +121,18 @@ public class Main {
     }
 
     private static void nourishment() {
-        for (int r = 0; r < N; r++) {
-            int s;
-            for (s = 0; s < d[r].size(); s++) {
-                Pair p = d[r].get(s);
+        while (!d.isEmpty()) {
+            Pair p = d.removeFirst();
 
-                int tr = p.r;
-                int tc = p.c;
-                int tAge = p.age;
+            int tr = p.r;
+            int tc = p.c;
+            int tAge = p.age;
 
-                if (map[tr][tc] - tAge < 0) {
-                    Pair dead = d[r].remove(s);
-                    s--;
-                    deadTrees.addLast(dead);
-                } else {
-                    map[tr][tc] -= tAge;
-                }
-            }
-        }
-    }
-
-    private static void getOlder() {
-        for (int r = 0; r < N; r++) {
-            int size = d[r].size();
-            for (int s = 0; s < size; s++) {
-                Pair p = d[r].get(s);
-                d[r].set(s, new Pair(p.r, p.c, p.age + 1));
+            if (map[tr][tc] - tAge < 0) {
+                deadTrees.addLast(p);
+            } else {
+                map[tr][tc] -= tAge;
+                remainedTrees.addLast(new Pair(tr, tc, tAge + 1));
             }
         }
     }
@@ -139,30 +149,25 @@ public class Main {
     }
 
     private static void addTree() {
-        for (int r = 0; r < N; r++) {
-            int s;
-            for (s = 0; s < d[r].size(); s++) {
-                Pair p = d[r].get(s);
+        while (!remainedTrees.isEmpty()) {
+            Pair p = remainedTrees.removeFirst();
 
-                int tr = p.r;
-                int tc = p.c;
-                int tAge = p.age;
+            int tr = p.r;
+            int tc = p.c;
+            int tAge = p.age;
 
-                if (tAge % 5 == 0) {
-                    for (int k = 0; k < 8; k++) {
-                        int nr = tr + dr[k];
-                        int nc = tc + dc[k];
+            d.addLast(new Pair(tr, tc, tAge));
 
-                        if (0 > nr || nr >= N || 0 > nc || nc >= N) {
-                            continue;
-                        }
+            if (tAge % 5 == 0) {
+                for (int k = 0; k < 8; k++) {
+                    int nr = tr + dr[k];
+                    int nc = tc + dc[k];
 
-                        d[nr].addFirst(new Pair(nr, nc, 1));
-
-                        if (nr == r) {
-                            s++;
-                        }
+                    if (0 > nr || nr >= N || 0 > nc || nc >= N) {
+                        continue;
                     }
+
+                    d.addFirst(new Pair(nr, nc, 1));
                 }
             }
         }
@@ -177,13 +182,7 @@ public class Main {
     }
 
     private static int countAliveTree() {
-        int sum = 0;
-
-        for (int r = 0; r < N; r++) {
-            sum += d[r].size();
-        }
-
-        return sum;
+        return d.size();
     }
 
     private static int s2i(String s) {
@@ -203,6 +202,9 @@ class Pair implements Comparable<Pair> {
     @Override
     public int compareTo(Pair o) {
         if (this.age == o.age) {
+            if (this.c == o.c) {
+                return Integer.compare(this.r, o.r);
+            }
             return Integer.compare(this.c, o.c);
         }
         return Integer.compare(this.age, o.age);
