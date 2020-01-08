@@ -109,7 +109,7 @@ public class Main {
 
             /**
              * 해당 cctv의 가능한 감시 방법들이 dirsArrOfCertainCCTV 에 들어있다.
-             *
+              *
              * ex. CCTV2의 경우
              * {{0, 1}, {1, 2}, {2, 3}, {3, 0}}
              */
@@ -121,7 +121,7 @@ public class Main {
             for (int i = 0; i < dirsArrOfCertainCCTV.length; i++) {
                 int[] dirs = dirsArrOfCertainCCTV[i];
 
-                // 해당 CCTV에 의해 EMPTY -> SURV 로 바뀔 좌표들을 pairs 리스트에 저장한다.
+                // 해당 CCTV에 의해 EMPTY -> SURV 로 바뀔 좌표들을 survedBlocks 리스트에 저장한다.
                 ArrayList<Pair> survedBlocks = new ArrayList<>();
                 for (int j = 0; j < dirs.length; j++) {
                     moveForSurv(row, col, dirs[j], survedBlocks);
@@ -185,3 +185,4 @@ class Pair {
         this.col = col;
     }
 }
+
