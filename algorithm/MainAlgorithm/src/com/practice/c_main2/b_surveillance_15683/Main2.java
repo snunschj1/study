@@ -32,10 +32,8 @@ public class Main2 {
     private static int[][] map;
 
     private static CCTV[] cctvs = new CCTV[8];
-    private static int[][] cctv5s = new int[8][2];
 
-    private static int numberOfCCTVFrom1To4;
-    private static int numberOfCCTV5;
+    private static int numberOfCCTV;
     private static int numberOfEMPTY;
 
     private static int min = 64;
@@ -64,9 +62,8 @@ public class Main2 {
 
     private static void solve() {
         recordMapInfo();
-        monitorCCTV5();
 
-        if (numberOfCCTVFrom1To4 > 0) {
+        if (numberOfCCTV > 0) {
             monitorRemainedCCTVs(0);
         } else {
             min = numberOfEMPTY;
@@ -82,19 +79,10 @@ public class Main2 {
 
                 if (info == EMPTY) {
                     ++numberOfEMPTY;
-                } else if (CCTV1 <= info && info <= CCTV4) {
-                    cctvs[numberOfCCTVFrom1To4++] = new CCTV(i, j, info);
-                } else if (info == CCTV5) {
-                    cctv5s[numberOfCCTV5][0] = i;
-                    cctv5s[numberOfCCTV5++][1] = j;
+                } else if (CCTV1 <= info && info <= CCTV5) {
+                    cctvs[numberOfCCTV++] = new CCTV(i, j, info);
                 }
             }
-        }
-    }
-
-    private static void monitorCCTV5() {
-        for (int i = 0; i < numberOfCCTV5; i++) {
-            monitor(cctv5s[i][0], cctv5s[i][1], 15, -1);
         }
     }
 
@@ -102,7 +90,7 @@ public class Main2 {
         for (int i = 0; i < cctvs[index].loop; i++) {
             monitor(cctvs[index].row, cctvs[index].col, cctvs[index].dir[i], SURV_ON_ACTION);
 
-            if (index == numberOfCCTVFrom1To4 - 1) {
+            if (index == numberOfCCTV - 1) {
                 if (numberOfEMPTY == 0) {
                     System.out.println(0);
                     System.exit(0);
@@ -113,7 +101,7 @@ public class Main2 {
                 }
             }
 
-            if (index < numberOfCCTVFrom1To4 - 1) {
+            if (index < numberOfCCTV - 1) {
                 monitorRemainedCCTVs(index + 1);
             }
 
@@ -188,6 +176,9 @@ class CCTV {
                 break;
             case 4:
                 dir = new int[] {14, 13, 11, 7};
+                break;
+            case 5:
+                dir = new int[] {15};
                 break;
             default:
                 break;
