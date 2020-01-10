@@ -15,7 +15,7 @@ public class Main {
 
     private static int N;
     private static int[][] map;
-    private static LinkedList<Integer> fishes = new LinkedList<>();
+    private static int[] fishes = new int[7];
 
     private static Shark shark = null;
     private static int second = 0;
@@ -38,20 +38,20 @@ public class Main {
                 int status = s2i(st.nextToken());
                 map[r][c] = status;
 
-                if (FISH1 <= status && status <= FISH6) {
-                    fishes.add(status);
-                } else if (status == SHARK) {
+                if (status == SHARK) {
                     shark = new Shark(r, c, 2, 0);
+                } else if (FISH1 <= status && status <= FISH6) {
+                    fishes[status] += 1;
                 }
             }
         }
-
-        Collections.sort(fishes);
     }
 
     private static void solve() {
 
-        while (!fishes.isEmpty() && fishes.getFirst() < shark.s) {
+
+        while (isSharkAbleToGo(shark)) {
+
 
             int[][] visited = new int[N][N];
 
@@ -60,6 +60,10 @@ public class Main {
             visited[shark.r][shark.c] = 1;
             map[shark.r][shark.c] = EMPTY;
 
+            boolean isCompleted = false;
+
+            boolean eatFish = false;
+
             while (!q.isEmpty()) {
                 Shark cur = q.remove();
                 int r = cur.r;
@@ -67,21 +71,11 @@ public class Main {
                 int size = cur.s;
                 int cnt = cur.cnt;
 
-                boolean eatFish = false;
-
                 for (int i = 0; i < 4; i++) {
                     int nr = r + dr[i];
                     int nc = c + dc[i];
 
-                    if (0 > nr || N >= nr || 0 > nc || N >= nc) {
-                        continue;
-                    }
-
-                    if (visited[nr][nc] != 0) {
-                        continue;
-                    }
-
-                    if (map[nr][nc] > size) {
+                    if (0 > nr || N <= nr || 0 > nc || N <= nc || visited[nr][nc] != 0 || map[nr][nc] > size) {
                         continue;
                     }
 
@@ -89,28 +83,52 @@ public class Main {
                         q.add(new Shark(nr, nc, size, cnt));
                         visited[nr][nc] = visited[r][c] + 1;
                     } else if (map[nr][nc] < size) {
-                        eatFish = true;
-                        fishes.removeFirst();
                         visited[nr][nc] = visited[r][c] + 1;
-                        second += visited[nr][nc] - 1;
-                        map[nr][nc] = SHARK;
+                        second += (visited[nr][nc] - 1);
+
+                        System.out.printf("row = %d, col = %d, size = %d, second = %d\n", nr, nc, size, second);
+
+                        if (fishes[map[nr][nc]] >= 1) {
+                            fishes[map[nr][nc]] -= 1;
+                        }
+
+                        map[nr][nc] = EMPTY;
 
                         if (size == cnt + 1) {
                             shark = new Shark(nr, nc, size+1, 0);
                         } else {
                             shark = new Shark(nr, nc, size, cnt + 1);
                         }
+
+                        eatFish = true;
+                        isCompleted = true;
                         break;
                     }
                 }
 
-                if (eatFish) {
+                if (isCompleted) {
                     break;
                 }
+            }
+
+            if (!eatFish) {
+                break;
             }
         }
 
         System.out.println(second);
+    }
+
+    private static boolean isSharkAbleToGo(Shark s) {
+        for (int i = 1; i <= 6; i++) {
+
+            if (fishes[i] != 0) {
+                if (i < s.s) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static int s2i(String s) {
