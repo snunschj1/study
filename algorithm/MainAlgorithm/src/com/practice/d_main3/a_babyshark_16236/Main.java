@@ -39,7 +39,7 @@ public class Main {
                 map[r][c] = status;
 
                 if (status == SHARK) {
-                    shark = new Shark(r, c, 2, 0);
+                    shark = new Shark(r, c, 2, 4, 0);
                 } else if (FISH1 <= status && status <= FISH6) {
                     fishes[status] += 1;
                 }
@@ -52,11 +52,10 @@ public class Main {
 
         while (isSharkAbleToGo(shark)) {
 
-
             int[][] visited = new int[N][N];
 
             Queue<Shark> q = new LinkedList<>();
-            q.add(new Shark(shark.r, shark.c, shark.s, shark.cnt));
+            q.add(new Shark(shark.r, shark.c, shark.s, 4, shark.cnt));
             visited[shark.r][shark.c] = 1;
             map[shark.r][shark.c] = EMPTY;
 
@@ -69,24 +68,32 @@ public class Main {
                 int r = cur.r;
                 int c = cur.c;
                 int size = cur.s;
+                int dir = cur.dir;
                 int cnt = cur.cnt;
 
                 for (int i = 0; i < 4; i++) {
+
+                    if (dir == 1 || dir == 2) {
+                        if (i == 3) {
+                            continue;
+                        }
+                    }
+
                     int nr = r + dr[i];
                     int nc = c + dc[i];
+
 
                     if (0 > nr || N <= nr || 0 > nc || N <= nc || visited[nr][nc] != 0 || map[nr][nc] > size) {
                         continue;
                     }
 
+
                     if (map[nr][nc] == EMPTY || map[nr][nc] == size) {
-                        q.add(new Shark(nr, nc, size, cnt));
+                        q.add(new Shark(nr, nc, size, i, cnt));
                         visited[nr][nc] = visited[r][c] + 1;
                     } else if (map[nr][nc] < size) {
                         visited[nr][nc] = visited[r][c] + 1;
                         second += (visited[nr][nc] - 1);
-
-                        System.out.printf("row = %d, col = %d, size = %d, second = %d\n", nr, nc, size, second);
 
                         if (fishes[map[nr][nc]] >= 1) {
                             fishes[map[nr][nc]] -= 1;
@@ -95,9 +102,9 @@ public class Main {
                         map[nr][nc] = EMPTY;
 
                         if (size == cnt + 1) {
-                            shark = new Shark(nr, nc, size+1, 0);
+                            shark = new Shark(nr, nc, size+1, i, 0);
                         } else {
-                            shark = new Shark(nr, nc, size, cnt + 1);
+                            shark = new Shark(nr, nc, size, i, cnt + 1);
                         }
 
                         eatFish = true;
@@ -106,9 +113,12 @@ public class Main {
                     }
                 }
 
+
+
                 if (isCompleted) {
                     break;
                 }
+
             }
 
             if (!eatFish) {
@@ -137,12 +147,13 @@ public class Main {
 }
 
 class Shark {
-    int r, c, s, cnt;
+    int r, c, s, dir, cnt;
 
-    Shark(int r, int c, int s, int cnt) {
+    Shark(int r, int c, int s, int dir, int cnt) {
         this.r = r;
         this.c = c;
         this.s = s;
+        this.dir = dir;
         this.cnt = cnt;
     }
 }
