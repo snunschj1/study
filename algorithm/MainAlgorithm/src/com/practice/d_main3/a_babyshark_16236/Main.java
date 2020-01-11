@@ -31,6 +31,7 @@ public class Main {
         N = s2i(br.readLine());
         map = new int[N][N];
 
+
         StringTokenizer st;
         for (int r = 0; r < N; r++) {
             st = new StringTokenizer(br.readLine());
@@ -39,7 +40,7 @@ public class Main {
                 map[r][c] = status;
 
                 if (status == SHARK) {
-                    shark = new Shark(r, c, 2, 4, 0);
+                    shark = new Shark(r, c, 2, 0, 0);
                 } else if (FISH1 <= status && status <= FISH6) {
                     fishes[status] += 1;
                 }
@@ -55,7 +56,7 @@ public class Main {
             int[][] visited = new int[N][N];
 
             Queue<Shark> q = new LinkedList<>();
-            q.add(new Shark(shark.r, shark.c, shark.s, 4, shark.cnt));
+            q.add(new Shark(shark.r, shark.c, shark.s, shark.cnt, 0));
             visited[shark.r][shark.c] = 1;
             map[shark.r][shark.c] = EMPTY;
 
@@ -68,16 +69,16 @@ public class Main {
                 int r = cur.r;
                 int c = cur.c;
                 int size = cur.s;
-                int dir = cur.dir;
                 int cnt = cur.cnt;
+                int sec = cur.second;
+
+                if (isCompleted) {
+                    if(sec >= shark.second) {
+                        continue;
+                    }
+                }
 
                 for (int i = 0; i < 4; i++) {
-
-                    if (dir == 1 || dir == 2) {
-                        if (i == 3) {
-                            continue;
-                        }
-                    }
 
                     int nr = r + dr[i];
                     int nc = c + dc[i];
@@ -89,39 +90,44 @@ public class Main {
 
 
                     if (map[nr][nc] == EMPTY || map[nr][nc] == size) {
-                        q.add(new Shark(nr, nc, size, i, cnt));
-                        visited[nr][nc] = visited[r][c] + 1;
+                        q.add(new Shark(nr, nc, size, cnt, sec + 1));
+                        visited[nr][nc] = 1;
                     } else if (map[nr][nc] < size) {
-                        visited[nr][nc] = visited[r][c] + 1;
-                        second += (visited[nr][nc] - 1);
-
-                        if (fishes[map[nr][nc]] >= 1) {
-                            fishes[map[nr][nc]] -= 1;
-                        }
-
-                        map[nr][nc] = EMPTY;
+                        visited[nr][nc] = 1;
 
                         if (size == cnt + 1) {
-                            shark = new Shark(nr, nc, size+1, i, 0);
+                            if (isCompleted) {
+                                if (shark.r == nr && shark.c < nc) {
+                                    continue;
+                                }
+                                if (shark.r < nr) {
+                                    continue;
+                                }
+                            }
+                            shark = new Shark(nr, nc, size+1, 0, sec + 1);
                         } else {
-                            shark = new Shark(nr, nc, size, i, cnt + 1);
+                            if (isCompleted) {
+                                if (shark.r == nr && shark.c < nc) {
+                                    continue;
+                                }
+                                if (shark.r < nr) {
+                                    continue;
+                                }
+                            }
+                            shark = new Shark(nr, nc, size, cnt + 1, sec + 1);
                         }
 
                         eatFish = true;
                         isCompleted = true;
-                        break;
                     }
-                }
-
-
-
-                if (isCompleted) {
-                    break;
                 }
 
             }
 
-            if (!eatFish) {
+            if (eatFish) {
+                fishes[map[shark.r][shark.c]] -= 1;
+                second += shark.second;
+            } else {
                 break;
             }
         }
@@ -147,13 +153,13 @@ public class Main {
 }
 
 class Shark {
-    int r, c, s, dir, cnt;
+    int r, c, s, cnt, second;
 
-    Shark(int r, int c, int s, int dir, int cnt) {
+    Shark(int r, int c, int s, int cnt, int second) {
         this.r = r;
         this.c = c;
         this.s = s;
-        this.dir = dir;
         this.cnt = cnt;
+        this.second = second;
     }
 }
