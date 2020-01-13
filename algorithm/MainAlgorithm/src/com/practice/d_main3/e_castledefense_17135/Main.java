@@ -14,10 +14,8 @@ public class Main {
     private static int N, M, D;
 
     private static int[][] map;
-    private static int[][] tmpMap;
 
     private static int numEnemy;
-    private static int tmpNumEnemy;
 
     private static int max;
 
@@ -35,17 +33,14 @@ public class Main {
         D = s2i(st.nextToken());
 
         map = new int[N + 1][M];
-        tmpMap = new int[N + 1][M];
 
         for (int r = 0; r < N; r++) {
             st = new StringTokenizer(br.readLine());
             for (int c = 0; c < M; c++) {
                 map[r][c] = s2i(st.nextToken());
-                tmpMap[r][c] = map[r][c];
 
                 if (map[r][c] == ENEMY) {
                     ++numEnemy;
-                    ++tmpNumEnemy;
                 }
             }
         }
@@ -58,27 +53,31 @@ public class Main {
     }
 
     private static void select(int col, int cnt, int[] archerCol) {
-        if (col >= M) {
+        // Todo : 궁수 위치 3개 조합으로 구하기
+        if (col > M) {
             return;
         } else {
             if (cnt == 3) {
 
-                for (int i = 0; i < N + 1; i++) {
-                    for (int j = 0; j < M; j++) {
-                        map[i][j] = tmpMap[i][j];
-                    }
+                int[][] tmp = new int[N+1][M];
+                copyMap(map, tmp);
+
+                int restEnemy = numEnemy;
+                int killedEnemy = 0;
+
+                while (restEnemy > 0) {
+                    // Todo : 3명의 궁수 공격 시작
+                    int killed = attack(archerCol, tmp);
+                    restEnemy -= killed;
+                    killedEnemy += killed;
+
+                    // Todo : 적들 이동
+                    restEnemy -= moveEnemy(tmp);
+
                 }
-                numEnemy = tmpNumEnemy;
 
-                int tmp = 0;
-
-                while (numEnemy > 0) {
-                    tmp += attack(archerCol);
-                    moveEnemy();
-                }
-
-                if (max < tmp) {
-                    max = tmp;
+                if (max < killedEnemy) {
+                    max = killedEnemy;
                 }
 
                 return;
@@ -91,13 +90,13 @@ public class Main {
 
     }
 
-    private static int attack(int[] archerCol) {
+    private static int attack(int[] archerCol, int[][] tmpMap) {
         // Todo : 3명의 궁수가 1초에 공격하는 적들
 
         boolean[][] attacks = new boolean[N][M];
 
         for (int i = 0; i < archerCol.length; i++) {
-            bfs(N, archerCol[i], attacks);
+            bfs(N, archerCol[i], attacks, tmpMap);
         }
 
         int killedEnemy = 0;
@@ -105,8 +104,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (attacks[i][j]) {
-                    map[i][j] = EMPTY;
-                    --numEnemy;
+                    tmpMap[i][j] = EMPTY;
                     ++killedEnemy;
                 }
             }
@@ -114,7 +112,8 @@ public class Main {
         return killedEnemy;
     }
 
-    private static void bfs(int row, int col, boolean[][] attacks) {
+    private static void bfs(int row, int col, boolean[][] attacks, int[][] tmpMap) {
+        // Todo : 한 명의 궁수가 공격하는 적 정하기
         int[][] visited = new int[N + 1][M];
         for (int i = 0; i < N + 1; i++) {
             for (int j = 0; j < M; j++) {
@@ -132,7 +131,7 @@ public class Main {
             int r = q.remove();
             int c = q.remove();
 
-            if (map[r][c] == ENEMY) {
+            if (tmpMap[r][c] == ENEMY) {
                 attacks[r][c] = true;
                 break;
             }
@@ -155,38 +154,38 @@ public class Main {
         }
     }
 
-    private static void moveEnemy() {
-        for (int c = 0; c < M; c++) {
-            if (map[N - 1][c] == ENEMY) {
-                map[N - 1][c] = EMPTY;
+    private static int moveEnemy(int[][] tmpMap) {
+        int removedEnemy = 0;
 
-                if (numEnemy > 0) {
-                    --numEnemy;
-                }
+        for (int c = 0; c < M; c++) {
+            if (tmpMap[N - 1][c] == ENEMY) {
+                tmpMap[N - 1][c] = EMPTY;
+
+                removedEnemy += 1;
             }
         }
 
         for (int r = N - 2; r >= 0; r--) {
             for (int c = 0; c < M; c++) {
-                if (map[r][c] == ENEMY) {
-                    map[r][c] = EMPTY;
-                    map[r + 1][c] = ENEMY;
+                if (tmpMap[r][c] == ENEMY) {
+                    tmpMap[r][c] = EMPTY;
+                    tmpMap[r + 1][c] = ENEMY;
                 }
+            }
+        }
+
+        return removedEnemy;
+    }
+
+    private static void copyMap(int[][] o, int[][] c) {
+        for (int i = 0; i < N + 1; i++) {
+            for (int j = 0; j < M; j++) {
+                c[i][j] = o[i][j];
             }
         }
     }
 
     private static int s2i(String s) {
         return Integer.parseInt(s);
-    }
-
-    private static void printMap() {
-        for (int i = 0; i < N + 1; i++) {
-            for (int j = 0; j < M; j++) {
-                System.out.print(map[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
