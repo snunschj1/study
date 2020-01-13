@@ -74,6 +74,9 @@ public class Main {
                     // Todo : 적들 이동
                     restEnemy -= moveEnemy(tmp);
 
+                    if (max > killedEnemy + restEnemy) {
+                        break;
+                    }
                 }
 
                 if (max < killedEnemy) {
