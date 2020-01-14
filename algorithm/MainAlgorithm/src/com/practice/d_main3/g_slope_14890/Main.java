@@ -52,11 +52,21 @@ public class Main {
     }
 
     private static void goHorizontal(int row, int col, int cnt, int dir) {
-        System.out.printf("goHorizontal : row = %d, col = %d, cnt = %d, dir = %d\n", row, col, cnt, dir);
+//        System.out.printf("goHorizontal : row = %d, col = %d, cnt = %d, dir = %d\n", row, col, cnt, dir);
         if (col == N-1) {
-            System.out.println("Horizontal : row = " + row);
-            result += 1;
-            return;
+            if (dir != DOWN) {
+//                System.out.println("Horizontal : row = " + row);
+                result += 1;
+                return;
+            } else {
+                if (L == 1) {
+//                    System.out.println("Horizontal : row = " + row);
+                    result += 1;
+                    return;
+                } else {
+                    return;
+                }
+            }
         }
 
         int next = map[row][col+1];
@@ -93,11 +103,21 @@ public class Main {
     }
 
     private static void goVertical(int row, int col, int cnt, int dir) {
-        System.out.printf("goVertical : row = %d, col = %d, cnt = %d, dir = %d\n", row, col, cnt, dir);
+//        System.out.printf("goVertical : row = %d, col = %d, cnt = %d, dir = %d\n", row, col, cnt, dir);
         if (row == N-1) {
-            System.out.println("Vertical : col = " + col);
-            result += 1;
-            return;
+            if (dir != DOWN) {
+//                System.out.println("Vertical : col = " + col);
+                result += 1;
+                return;
+            } else {
+                if (L == 1) {
+//                    System.out.println("Vertical : col = " + col);
+                    result += 1;
+                    return;
+                } else {
+                    return;
+                }
+            }
         }
 
         int next = map[row+1][col];
