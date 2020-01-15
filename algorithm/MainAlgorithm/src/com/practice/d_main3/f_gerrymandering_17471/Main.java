@@ -5,17 +5,21 @@ import java.io.*;
 
 public class Main {
 
+    private static final int CANCELED = 0;
+    private static final int VISITED = 1;
+    private static final int CHECKED = 2;
+
     private static int N;
 
     private static LinkedList<Integer>[] list;
 
     private static int[] pop;
-    private static int[] visit;
+
+    private static ArrayList<Pair> edges = new ArrayList<>();
 
     private static boolean flag = false;
 
     private static int answer = 1000;
-    private static int sum = 0;
 
     public static void main(String[] args) throws Exception {
         inputData();
@@ -31,13 +35,11 @@ public class Main {
         list = new LinkedList[N];
 
         pop = new int[N];
-        visit = new int[N];
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             list[i] = new LinkedList<>();
             pop[i] = s2i(st.nextToken());
-            sum += pop[i];
         }
 
         for (int i = 0; i < N; i++) {
@@ -46,7 +48,12 @@ public class Main {
             int k = s2i(st.nextToken());
 
             while (k-- > 0) {
-                list[i].add(s2i(st.nextToken()) - 1);
+                int adjacentVertex = s2i(st.nextToken()) - 1;
+                list[i].add(adjacentVertex);
+
+                if (i < adjacentVertex) {
+                    edges.add(new Pair(i, adjacentVertex));
+                }
             }
         }
 
@@ -54,9 +61,11 @@ public class Main {
     }
 
     private static void solve() {
-        visit[0] = 1;
-        dfs1(0, 1, true);
-        dfs1(0, 1, false);
+        for (int cnt = 1; cnt <= edges.size(); cnt++) {
+            int[] checkEdges = new int[edges.size()];
+            // Todo : 간선 조합을 구한다.
+            selectEdges(0, 0, cnt, checkEdges);
+        }
 
         if (flag) {
             System.out.println(answer);
@@ -65,104 +74,169 @@ public class Main {
         }
     }
 
-    private static void dfs1(int n, int cnt, boolean isFinished) {
-        if (isFinished) {
-            int m = findNonVisitDistrict();
-            if (m != -1) {
-                if (dfs2(m, N - cnt)) {
-                    System.out.println("FIND!");
-                    int ans = calculateAnswer();
+    private static void selectEdges(int index, int cnt, int target, int[] checkEdges) {
 
-                    if (answer > ans) {
-                        answer = ans;
-                        flag = true;
+        if (cnt == target) {
+            // Todo : 간선 조합에 따라 정점들을 팀 0 / 팀 1 로 나눈다.
+            int[] vertexes = selectVertexes(checkEdges);
+            int[] tmpVertexes = new int[vertexes.length];
+            for (int i = 0; i < vertexes.length; i++) {
+                tmpVertexes[i] = vertexes[i];
+            }
+
+            int popOne = checkTeamOne(vertexes);
+            int popZero = checkTeamTwo(tmpVertexes);
+
+            if (popOne != -1 && popZero != -1) {
+                int result = Math.abs(popOne - popZero);
+
+                if (!flag) {
+                    flag = true;
+                }
+
+                if (answer > result) {
+                    answer = result;
+                }
+            }
+
+            return;
+        } else {
+            if (index >= checkEdges.length) {
+                return;
+            }
+        }
+
+        checkEdges[index] = VISITED;
+        selectEdges(index + 1, cnt + 1, target, checkEdges);
+        checkEdges[index] = CANCELED;
+        selectEdges(index + 1, cnt, target, checkEdges);
+    }
+
+    private static int checkTeamOne(int[] vertexes) {
+        int[] c = new int[vertexes.length];
+
+        int startIndex = 0;
+
+        for (int i = 0; i < vertexes.length; i++) {
+            if (vertexes[i] == VISITED) {
+                startIndex = i;
+                break;
+            }
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        q.add(startIndex);
+        vertexes[startIndex] = CHECKED;
+        c[startIndex] = VISITED;
+
+        while(!q.isEmpty()) {
+            int i = q.remove();
+
+            for (int j = 0; j < list[i].size(); j++) {
+                int next = list[i].get(j);
+
+                if (c[next] == 0) {
+                    if (vertexes[next] == VISITED) {
+                        vertexes[next] = CHECKED;
+                        c[next] = VISITED;
+                        q.add(next);
                     }
                 }
             }
-            return;
         }
 
-        for (int i = 0; i < list[n].size(); i++) {
-            int nn = list[n].get(i);
+        int p = 0;
 
-            if (visit[nn] == 0) {
-                visit[nn] = 1;
-                dfs1(nn, cnt + 1, true);
-                if (cnt + 1 < N) {
-                    dfs1(nn, cnt + 1, false);
-                }
-                visit[nn] = 0;
+        for (int i = 0; i < vertexes.length; i++) {
+            if (vertexes[i] == VISITED) {
+                p = -1;
+                break;
+            }
+
+            if (vertexes[i] == CHECKED) {
+                p += pop[i];
             }
         }
+
+        return p;
     }
 
-    private static boolean dfs2(int m, int remainCnt) {
+    private static int checkTeamTwo(int[] vertexes) {
+        int[] c = new int[vertexes.length];
 
-        int[] tmp = copyArr(visit);
-        int tmpCnt = 0;
+        int startIndex = 0;
+
+        for (int i = 0; i < vertexes.length; i++) {
+            if (vertexes[i] == CANCELED) {
+                startIndex = i;
+                break;
+            }
+        }
 
         Queue<Integer> q = new LinkedList<>();
-        q.add(m);
-        tmp[m] = 1;
-        tmpCnt += 1;
+        q.add(startIndex);
+        vertexes[startIndex] = CHECKED;
+        c[startIndex] = VISITED;
 
         while(!q.isEmpty()) {
-            int n = q.remove();
+            int i = q.remove();
 
-            for (int i = 0; i < list[n].size(); i++) {
-                int nn = list[n].get(i);
+            for (int j = 0; j < list[i].size(); j++) {
+                int next = list[i].get(j);
 
-                if (tmp[nn] == 0) {
-                    q.add(nn);
-                    tmp[nn] = 1;
-                    tmpCnt += 1;
+                if (c[next] == 0) {
+                    if (vertexes[next] == CANCELED) {
+                        vertexes[next] = CHECKED;
+                        c[next] = VISITED;
+                        q.add(next);
+                    }
                 }
             }
         }
 
-        if (tmpCnt == remainCnt) {
-            return true;
-        } else {
-            return false;
-        }
+        int p = 0;
 
-    }
+        for (int i = 0; i < vertexes.length; i++) {
+            if (vertexes[i] == CANCELED) {
+                p = -1;
+                break;
+            }
 
-    private static int calculateAnswer() {
-        int tmp = 0;
-
-        System.out.println("START");
-        for (int i = 0; i < N; i++) {
-            System.out.println("checking : i = " + i);
-            if (visit[i] == 1) {
-                tmp += pop[i];
-                System.out.println("i = " + i + ", pop[i] = " + pop[i]);
+            if (vertexes[i] == CHECKED) {
+                p += pop[i];
             }
         }
-        System.out.println("tmp = " + tmp);
 
-        return Math.abs(sum - 2 * tmp);
+        return p;
     }
 
-    private static int findNonVisitDistrict() {
-        int n = -1;
-        for (int i = 0; i < N; i++) {
-            if (visit[i] == 0) {
-                n = i;
+    private static int[] selectVertexes(int[] checkEdges) {
+        int[] vertexes = new int[N];
+
+        for (int i = 0; i < checkEdges.length; i++) {
+            if (checkEdges[i] == VISITED) {
+                Pair p = edges.get(i);
+                int x = p.x;
+                int y = p.y;
+
+                vertexes[x] = VISITED;
+                vertexes[y] = VISITED;
             }
         }
-        return n;
-    }
 
-    private static int[] copyArr(int[] o) {
-        int[] tmp = new int[o.length];
-        for (int i = 0; i < o.length; i++) {
-            tmp[i] = o[i];
-        }
-        return tmp;
+        return vertexes;
     }
 
     private static int s2i(String s) {
         return Integer.parseInt(s);
+    }
+}
+
+class Pair {
+    int x, y;
+
+    Pair(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
