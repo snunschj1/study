@@ -17,8 +17,10 @@ public class Main {
 
     private static Virus[] viri = new Virus[10];
     private static int numVirus = 0;
+    private static int numEmpty = 0;
 
-    private static int answer;
+    private static int answer = Integer.MAX_VALUE;
+    private static boolean flag = false;
 
     public static void main(String[] args) throws Exception {
         inputData();
@@ -41,18 +43,19 @@ public class Main {
 
                 if (map[r][c] == VIRUS) {
                     viri[numVirus++] = new Virus(r, c);
-                } 
+                } else if (map[r][c] == EMPTY) {
+                    numEmpty++;
+                }
             }
         }
-
-        answer = 2 * N;
     }
 
     private static void solve() {
         int[] activated = new int[M];
         Arrays.fill(activated, -1);
         combination(0, 0, M, activated);
-        if (answer == 2 * N) {
+
+        if (!flag) {
             System.out.println(-1);
         } else {
             System.out.println(answer);
@@ -71,7 +74,6 @@ public class Main {
 
         arr[cnt] = index;
         combination(index + 1, cnt + 1, target, arr);
-        arr[cnt] = -1;
         combination(index + 1, cnt, target, arr);
     }
 
@@ -93,18 +95,10 @@ public class Main {
             visit[virus.r][virus.c] = 0;
         }
 
-        int cntVirus = M;
+        int second = 0;
+        int cntEmpty = 0;
 
         while(!q.isEmpty()) {
-
-            for (int r = 0; r < N; r++) {
-                for (int c = 0; c < N; c++) {
-                    System.out.print(visit[r][c] + " ");
-                }
-                System.out.println();
-            }
-            System.out.println();
-
 
             int row = q.remove();
             int col = q.remove();
@@ -113,11 +107,7 @@ public class Main {
                 int nr = row + dr[k];
                 int nc = col + dc[k];
 
-                if (0 > nr || N <= nr || 0 > nc || N <= nc) {
-                    continue;
-                }
-
-                if (map[nr][nc] == WALL) {
+                if (0 > nr || N <= nr || 0 > nc || N <= nc || map[nr][nc] == WALL) {
                     continue;
                 }
 
@@ -126,18 +116,24 @@ public class Main {
                     q.add(nc);
                     visit[nr][nc] = visit[row][col] + 1;
 
-                    if (map[nr][nc] == VIRUS) {
-                        cntVirus++;
+                    if (map[nr][nc] == EMPTY) {
+                        cntEmpty++;
 
-                        if (cntVirus == numVirus) {
-                            if (answer > visit[nr][nc]) answer = visit[nr][nc];
-                            q.clear();
-                            break;
+                        if (second < visit[nr][nc]) {
+                            second = visit[nr][nc];
                         }
                     }
                 }
             }
         }
+
+        if (cntEmpty == numEmpty) {
+            if (answer > second) {
+                flag = true;
+                answer = second;
+            }
+        }
+
     }
 
     private static int s2i(String s) {
