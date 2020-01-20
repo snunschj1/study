@@ -5,8 +5,6 @@ import java.io.*;
 
 public class Main {
 
-    private static final int NOT_RUN = 0;
-
     private static final int ONE_RUN = 1;
     private static final int TWO_RUN = 2;
     private static final int THREE_RUN = 3;
@@ -50,7 +48,7 @@ public class Main {
         }
 
         int[] orders;
-        int[] run;
+        int[] run = new int[3];
 
         do {
 
@@ -65,23 +63,13 @@ public class Main {
 
                 int outs = 0;
 
-                /** 선수 번호에 따라 주자 인지 여부*/
-                run = new int[9];
-
                 while (true) {
 
                     if (order == 9) {
                         order = 0;
                     }
 
-                    int curPlayer = orders[order];
-
-                    if (run[curPlayer] != NOT_RUN) {
-                        order++;
-                        continue;
-                    } else {
-                        order++;
-                    }
+                    int curPlayer = orders[order++];
 
                     int result = innings[inning][curPlayer];
 
@@ -89,11 +77,14 @@ public class Main {
                         outs += 1;
 
                         if (outs == 3) {
+                            for (int i = 0; i < 3; i++) {
+                                run[i] = 0;
+                            }
                             break;
                         }
 
                     } else {
-                        score += run(curPlayer, result, run);
+                        score += run(result, run);
                     }
                 }
             }
@@ -107,24 +98,24 @@ public class Main {
         System.out.println(answer);
     }
 
-    private static int run(int player, int result, int[] run) {
+    private static int run(int result, int[] run) {
 
         int score = 0;
 
         switch (result) {
             case ONE_RUN:
                 score = moveRunner(ONE_RUN, run);
-                run[player] = ONE_RUN;
+                run[ONE_RUN - 1] = 1;
                 break;
 
             case TWO_RUN:
                 score = moveRunner(TWO_RUN, run);
-                run[player] = TWO_RUN;
+                run[TWO_RUN - 1] = 1;
                 break;
 
             case THREE_RUN:
                 score = moveRunner(THREE_RUN, run);
-                run[player] = THREE_RUN;
+                run[THREE_RUN - 1] = 1;
                 break;
 
             case HOME_RUN:
@@ -142,19 +133,15 @@ public class Main {
 
         int score = 0;
 
-        for (int i = 0; i < 9; i++) {
-
-            if (run[i] != NOT_RUN) {
-
-                int next = run[i] + result;
-
-                if (next >= 4) {
-                    score++;
-                    run[i] = NOT_RUN;
-                } else {
-                    run[i] = next;
-                }
+        for (int i = 2; i >= 0; i--) {
+            if (i + result >= 3) {
+                score += run[i];
+                run[i] = 0;
+            } else {
+                run[i + result] = run[i];
+                run[i] = 0;
             }
+
         }
 
         return score;
