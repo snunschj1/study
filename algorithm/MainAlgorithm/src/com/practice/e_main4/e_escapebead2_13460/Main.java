@@ -75,20 +75,23 @@ public class Main {
     }
 
     private static void go(int dir, Bead red, Bead blue, int cnt) {
+        if (cnt >= 11) {
+            return;
+        }
+
+        if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
+            return;
+        }
+
         if (red.r == def[HOLE].r && red.c == def[HOLE].c) {
 
-            if (!(blue.r == def[HOLE].r && blue.c == def[HOLE].c) && (cnt <= 10)) {
-                if (answer > cnt) {
-                    answer = cnt;
-                }
+            if (answer > cnt) {
+                answer = cnt;
             }
 
             return;
         }
 
-        if (cnt >= answer) {
-            return;
-        }
 
         for (int k = 0; k < 4; k++) {
             if (dir != -1 && (dir + 2) % 4 == k) {
@@ -104,33 +107,46 @@ public class Main {
             if (k % 2 == 0) {
                 /* 짝수 */
                 if (k + diffRow == 1) {
-                    nb = goBead(k, blue);
-                    nr = goBead(k, red);
+                    nb = goBead(k, blue, BLUE);
+                    nr = goBead(k, red, RED);
                 } else {
-                    nr = goBead(k, red);
-                    nb = goBead(k, blue);
+                    nr = goBead(k, red, RED);
+                    nb = goBead(k, blue, BLUE);
                 }
             } else {
                 /* 홀수 */
                 if (k + diffCol == 2) {
-                    nr = goBead(k, red);
-                    nb = goBead(k, blue);
+                    nr = goBead(k, red, RED);
+                    nb = goBead(k, blue, BLUE);
                 } else {
-                    nb = goBead(k, blue);
-                    nr = goBead(k, red);
+                    nb = goBead(k, blue, BLUE);
+                    nr = goBead(k, red, RED);
                 }
             }
 
             if (nr.r == red.r && nr.c == red.c) {
+                backToPrev(blue, nb, BLUE);
                 continue;
             }
 
             go(k, nr, nb, cnt + 1);
 
+            backToPrev(red, nr, RED);
+            backToPrev(blue, nb, BLUE);
+
         }
     }
 
-    private static Bead goBead(int k, Bead bead) {
+    private static void backToPrev(Bead prev, Bead next, int type) {
+        if (map[next.r][next.c] == type) {
+            map[next.r][next.c] = EMPTY;
+            map[prev.r][prev.c] = type;
+        } else if (map[next.r][next.c] == HOLE) {
+            map[prev.r][prev.c] = RED;
+        }
+    }
+
+    private static Bead goBead(int k, Bead bead, int type) {
         int nr = bead.r;
         int nc = bead.c;
 
@@ -139,8 +155,16 @@ public class Main {
             nc += dc[k];
 
             if (map[nr][nc] == WALL || map[nr][nc] == RED || map[nr][nc] == BLUE) {
+
+                if (!(bead.r == nr - dr[k] && bead.c == nc - dc[k])) {
+                    map[nr - dr[k]][nc - dc[k]] = type;
+                    map[bead.r][bead.c] = EMPTY;
+                }
+
                 return new Bead(nr - dr[k], nc - dc[k]);
             } else if (map[nr][nc] == HOLE) {
+
+                map[bead.r][bead.c] = EMPTY;
                 return new Bead(nr, nc);
             }
         }
