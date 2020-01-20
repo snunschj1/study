@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Main {
 
-    private static final int RUNNING = -1;
+    private static final int NOT_RUN = 0;
 
     private static final int ONE_RUN = 1;
     private static final int TWO_RUN = 2;
@@ -18,7 +18,6 @@ public class Main {
     private static int[][] innings;
 
     private static int answer = 0;
-
 
     public static void main(String[] args) throws Exception {
         inputData();
@@ -69,11 +68,6 @@ public class Main {
                 /** 선수 번호에 따라 주자 인지 여부*/
                 run = new int[9];
 
-                LinkedList<Integer>[] bases = new LinkedList[3];
-                for (int base = 0; base < 3; base++) {
-                    bases[base] = new LinkedList<>();
-                }
-
                 while (true) {
 
                     if (order == 9) {
@@ -82,7 +76,7 @@ public class Main {
 
                     int curPlayer = orders[order];
 
-                    if (run[curPlayer] == RUNNING) {
+                    if (run[curPlayer] != NOT_RUN) {
                         order++;
                         continue;
                     } else {
@@ -99,7 +93,7 @@ public class Main {
                         }
 
                     } else {
-                        score += run(curPlayer, result, bases, run);
+                        score += run(curPlayer, result, run);
                     }
                 }
             }
@@ -113,35 +107,28 @@ public class Main {
         System.out.println(answer);
     }
 
-    private static int run(int player, int result, LinkedList<Integer>[] bases, int[] run) {
+    private static int run(int player, int result, int[] run) {
 
         int score = 0;
 
         switch (result) {
             case ONE_RUN:
-
-                score = moveRunner(ONE_RUN, bases, run);
-
-                bases[ONE_RUN - 1].add(player);
-                run[player] = RUNNING;
+                score = moveRunner(ONE_RUN, run);
+                run[player] = ONE_RUN;
                 break;
 
             case TWO_RUN:
-                score = moveRunner(TWO_RUN, bases, run);
-
-                bases[TWO_RUN - 1].add(player);
-                run[player] = RUNNING;
+                score = moveRunner(TWO_RUN, run);
+                run[player] = TWO_RUN;
                 break;
 
             case THREE_RUN:
-                score = moveRunner(THREE_RUN, bases, run);
-
-                bases[THREE_RUN - 1].add(player);
-                run[player] = RUNNING;
+                score = moveRunner(THREE_RUN, run);
+                run[player] = THREE_RUN;
                 break;
 
             case HOME_RUN:
-                score = moveRunner(HOME_RUN, bases, run) + 1;
+                score = moveRunner(HOME_RUN, run) + 1;
                 break;
 
             default:
@@ -151,22 +138,21 @@ public class Main {
         return score;
     }
 
-    private static int moveRunner(int result, LinkedList<Integer>[] bases, int[] run) {
+    private static int moveRunner(int result, int[] run) {
 
         int score = 0;
 
-        for (int i = 2; i >= 0; i--) {
+        for (int i = 0; i < 9; i++) {
 
-            while (!bases[i].isEmpty()) {
+            if (run[i] != NOT_RUN) {
 
-                int p = bases[i].pop();
+                int next = run[i] + result;
 
-                if (i >= (3 - result)) {
+                if (next >= 4) {
                     score++;
-                    run[p] = 0;
-
-                } else if (i + result <= 2){
-                    bases[i + result].add(p);
+                    run[i] = NOT_RUN;
+                } else {
+                    run[i] = next;
                 }
             }
         }
