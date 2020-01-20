@@ -40,20 +40,19 @@ public class Main {
 
     private static void solve() {
 
-        int[] a = new int[8];
+        int[] orders = new int[9];
         for (int i = 0; i < 9; i++) {
-            if (i == 3) continue;
-            else if (i < 3) a[i] = i + 1;
-            else /* if (i > 3) */ a[i-1] = i;
+            orders[i] = i;
         }
 
-        int[] orders;
         int[] run = new int[3];
 
         do {
 
             /** 4번 타자 포함한 타자 순서 */
-            orders = completeOrder(a);
+            int tmp = orders[3];
+            orders[3] = 0;
+            orders[0] = tmp;
 
             int score = 0;
 
@@ -93,7 +92,11 @@ public class Main {
                 answer = score;
             }
 
-        } while (next_permutation(a));
+            tmp = orders[0];
+            orders[0] = orders[3];
+            orders[3] = tmp;
+
+        } while (next_permutation(orders));
 
         System.out.println(answer);
     }
@@ -147,25 +150,14 @@ public class Main {
         return score;
     }
 
-
-    private static int[] completeOrder(int[] a) {
-        int[] tmp = new int[9];
-        for (int i = 0; i < 9; i++) {
-            if (i == 3) tmp[i] = 0;
-            else if (i < 3) tmp[i] = a[i];
-            else /* if (i > 3) */ tmp[i] = a[i - 1];
-        }
-        return tmp;
-    }
-
     private static boolean next_permutation(int[] a) {
         int i = a.length - 1;
 
-        while (i > 0 && a[i] <= a[i-1]) {
+        while (i > 1 && a[i] <= a[i-1]) {
             i -= 1;
         }
 
-        if (i <= 0) {
+        if (i <= 1) {
             return false;
         }
 
