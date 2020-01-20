@@ -75,57 +75,70 @@ public class Main {
     }
 
     private static void go(int dir, Bead red, Bead blue, int cnt) {
-        if (cnt >= 11) {
-            return;
-        }
 
-        if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
+        if (cnt >= 11) {
             return;
         }
 
         if (red.r == def[HOLE].r && red.c == def[HOLE].c) {
 
-            if (answer > cnt) {
-                answer = cnt;
+            if (!(blue.r == def[HOLE].r && blue.c == def[HOLE].c)) {
+                if (answer > cnt) {
+                    answer = cnt;
+                }
             }
+            return;
+
+        } else if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
 
             return;
         }
-
 
         for (int k = 0; k < 4; k++) {
             if (dir != -1 && (dir + 2) % 4 == k) {
                 continue;
             }
 
-            int diffRow = red.r - blue.r;
-            int diffCol = red.c - blue.c;
-
             Bead nr;
             Bead nb;
 
-            if (k % 2 == 0) {
-                /* 짝수 */
-                if (k + diffRow == 1) {
+            if (k == 0) {
+                if (red.c == blue.c && red.r > blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
                 }
-            } else {
-                /* 홀수 */
-                if (k + diffCol == 2) {
-                    nr = goBead(k, red, RED);
+            } else if (k == 1) {
+                if (red.r == blue.r && red.c < blue.c) {
                     nb = goBead(k, blue, BLUE);
+                    nr = goBead(k, red, RED);
                 } else {
+                    nr = goBead(k, red, RED);
+                    nb = goBead(k, blue, BLUE);
+                }
+
+            } else if (k == 2) {
+                if (red.c == blue.c && red.r < blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
+                } else {
+                    nr = goBead(k, red, RED);
+                    nb = goBead(k, blue, BLUE);
+                }
+
+            } else /* if (k == 3) */ {
+                if (red.r == blue.r && red.c > blue.c) {
+                    nb = goBead(k, blue, BLUE);
+                    nr = goBead(k, red, RED);
+                } else {
+                    nr = goBead(k, red, RED);
+                    nb = goBead(k, blue, BLUE);
                 }
             }
 
-            if (nr.r == red.r && nr.c == red.c) {
-                backToPrev(blue, nb, BLUE);
+            if (nr.r == red.r && nr.c == red.c && nb.r == blue.r && nb.c == blue.c) {
                 continue;
             }
 
@@ -142,7 +155,7 @@ public class Main {
             map[next.r][next.c] = EMPTY;
             map[prev.r][prev.c] = type;
         } else if (map[next.r][next.c] == HOLE) {
-            map[prev.r][prev.c] = RED;
+            map[prev.r][prev.c] = type;
         }
     }
 
@@ -154,7 +167,7 @@ public class Main {
             nr += dr[k];
             nc += dc[k];
 
-            if (map[nr][nc] == WALL || map[nr][nc] == RED || map[nr][nc] == BLUE) {
+            if (map[nr][nc] == WALL || map[nr][nc] == ((type + 1) % 2)) {
 
                 if (!(bead.r == nr - dr[k] && bead.c == nc - dc[k])) {
                     map[nr - dr[k]][nc - dc[k]] = type;
@@ -172,6 +185,28 @@ public class Main {
 
     private static int s2i(String s) {
         return Integer.parseInt(s);
+    }
+
+    private static void printMap() {
+        for (int r = 0; r < N; r++) {
+            for (int c = 0; c < M; c++) {
+                int tmp = map[r][c];
+
+                if (tmp == EMPTY) {
+                    System.out.print(".");
+                } else if (tmp == RED) {
+                    System.out.print("R");
+                } else if (tmp == BLUE) {
+                    System.out.print("B");
+                } else if (tmp == HOLE) {
+                    System.out.print("0");
+                } else if (tmp == WALL) {
+                    System.out.print("#");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
 
