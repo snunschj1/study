@@ -47,7 +47,6 @@ public class Main {
     private static void solve() {
         for (int i = 0; i < C; i++) {
             catchShark(i);
-            System.out.println("====" + (i+1) + "초");
             moveShark();
         }
 
@@ -59,6 +58,7 @@ public class Main {
             if (map[r][col] != null) {
                 answer += map[r][col].z;
                 map[r][col] = null;
+                break;
             }
         }
     }
@@ -73,9 +73,7 @@ public class Main {
                     int s = map[r][c].s;
                     int d = map[r][c].d;
                     int z = map[r][c].z;
-                    System.out.println("start");
                     go(r, c, s, d, z, s, tmp);
-                    System.out.println();
                 }
             }
         }
@@ -84,8 +82,6 @@ public class Main {
     }
 
     private static void go(int r, int c, int s, int d, int z, int cnt, Shark[][] tmp) {
-        System.out.printf("r = %d , c = %d, s = %d, d = %d, z = %d\n", r, c, s, d, z);
-
         if (cnt == 0) {
             Shark other = tmp[r][c];
             if (other != null) {
