@@ -202,5 +202,4 @@ class Shark2 {
         this.d = d;
         this.z = z;
     }
-
 }
