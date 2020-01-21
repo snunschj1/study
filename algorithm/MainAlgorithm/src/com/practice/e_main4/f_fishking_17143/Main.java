@@ -64,33 +64,37 @@ public class Main {
     }
 
     private static void moveShark() {
+
+        Shark[][] tmp = new Shark[R][C];
+
         for (int r = 0; r < R; r++) {
             for (int c = 0; c < C; c++) {
                 if (map[r][c] != null) {
                     int s = map[r][c].s;
                     int d = map[r][c].d;
                     int z = map[r][c].z;
-                    map[r][c] = null;
                     System.out.println("start");
-                    go(r, c, s, d, z, s);
+                    go(r, c, s, d, z, s, tmp);
                     System.out.println();
                 }
             }
         }
+
+        map = tmp;
     }
 
-    private static void go(int r, int c, int s, int d, int z, int cnt) {
+    private static void go(int r, int c, int s, int d, int z, int cnt, Shark[][] tmp) {
         System.out.printf("r = %d , c = %d, s = %d, d = %d, z = %d\n", r, c, s, d, z);
 
         if (cnt == 0) {
-            Shark other = map[r][c];
+            Shark other = tmp[r][c];
             if (other != null) {
                 if (z < other.z) {
                     return;
                 }
             }
 
-            map[r][c] = new Shark(s, d, z);
+            tmp[r][c] = new Shark(s, d, z);
             return;
         }
 
@@ -106,7 +110,7 @@ public class Main {
             nc = c + dc[nd];
         }
 
-        go(nr, nc, s, nd, z, cnt - 1);
+        go(nr, nc, s, nd, z, cnt - 1, tmp);
     }
 
     private static int s2i(String s) {
