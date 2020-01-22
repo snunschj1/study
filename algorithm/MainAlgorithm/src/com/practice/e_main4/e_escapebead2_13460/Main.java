@@ -150,12 +150,6 @@ public class Main {
                 continue;
             }
 
-            if (nr.r == nb.r && nr.c == nb.c) {
-                backToPrevAll(red, blue, nr);
-                continue;
-            }
-
-
             go(k, nr, nb, cnt + 1);
 
             if (flag == RED) {
@@ -174,17 +168,6 @@ public class Main {
             map[prev.r][prev.c] = type;
         } else if (map[next.r][next.c] == HOLE) {
             map[prev.r][prev.c] = type;
-        }
-    }
-
-    private static void backToPrevAll(Bead prevRed, Bead prevBlue, Bead next) {
-        if (map[next.r][next.c] == BLUE || map[next.r][next.c] == RED) {
-            map[prevRed.r][prevRed.c] = RED;
-            map[prevBlue.r][prevBlue.c] = BLUE;
-            map[next.r][next.c] = EMPTY;
-        } else if (map[next.r][next.c] == HOLE) {
-            map[prevRed.r][prevRed.c] = RED;
-            map[prevBlue.r][prevBlue.c] = BLUE;
         }
     }
 
