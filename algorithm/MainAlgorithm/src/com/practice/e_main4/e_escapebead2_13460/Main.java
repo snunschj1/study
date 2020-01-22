@@ -76,16 +76,14 @@ public class Main {
 
     private static void go(int dir, Bead red, Bead blue, int cnt) {
 
-        if (cnt >= 11) {
+        if (cnt >= answer) {
             return;
         }
 
         if (red.r == def[HOLE].r && red.c == def[HOLE].c) {
 
             if (!(blue.r == def[HOLE].r && blue.c == def[HOLE].c)) {
-                if (answer > cnt) {
-                    answer = cnt;
-                }
+                answer = cnt;
             }
             return;
 
@@ -102,10 +100,13 @@ public class Main {
             Bead nr;
             Bead nb;
 
+            int flag = RED;
+
             if (k == 0) {
                 if (red.c == blue.c && red.r > blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
+                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -114,6 +115,7 @@ public class Main {
                 if (red.r == blue.r && red.c < blue.c) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
+                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -123,6 +125,7 @@ public class Main {
                 if (red.c == blue.c && red.r < blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
+                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -132,6 +135,7 @@ public class Main {
                 if (red.r == blue.r && red.c > blue.c) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
+                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -142,11 +146,21 @@ public class Main {
                 continue;
             }
 
+            if (nr.r == nb.r && nr.c == nb.c) {
+                backToPrevAll(red, blue, nr);
+                continue;
+            }
+
+
             go(k, nr, nb, cnt + 1);
 
-            backToPrev(red, nr, RED);
-            backToPrev(blue, nb, BLUE);
-
+            if (flag == RED) {
+                backToPrev(blue, nb, BLUE);
+                backToPrev(red, nr, RED);
+            } else {
+                backToPrev(red, nr, RED);
+                backToPrev(blue, nb, BLUE);
+            }
         }
     }
 
@@ -156,6 +170,17 @@ public class Main {
             map[prev.r][prev.c] = type;
         } else if (map[next.r][next.c] == HOLE) {
             map[prev.r][prev.c] = type;
+        }
+    }
+
+    private static void backToPrevAll(Bead prevRed, Bead prevBlue, Bead next) {
+        if (map[next.r][next.c] == BLUE || map[next.r][next.c] == RED) {
+            map[prevRed.r][prevRed.c] = RED;
+            map[prevBlue.r][prevBlue.c] = BLUE;
+            map[next.r][next.c] = EMPTY;
+        } else if (map[next.r][next.c] == HOLE) {
+            map[prevRed.r][prevRed.c] = RED;
+            map[prevBlue.r][prevBlue.c] = BLUE;
         }
     }
 
@@ -185,28 +210,6 @@ public class Main {
 
     private static int s2i(String s) {
         return Integer.parseInt(s);
-    }
-
-    private static void printMap() {
-        for (int r = 0; r < N; r++) {
-            for (int c = 0; c < M; c++) {
-                int tmp = map[r][c];
-
-                if (tmp == EMPTY) {
-                    System.out.print(".");
-                } else if (tmp == RED) {
-                    System.out.print("R");
-                } else if (tmp == BLUE) {
-                    System.out.print("B");
-                } else if (tmp == HOLE) {
-                    System.out.print("0");
-                } else if (tmp == WALL) {
-                    System.out.print("#");
-                }
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 }
 
