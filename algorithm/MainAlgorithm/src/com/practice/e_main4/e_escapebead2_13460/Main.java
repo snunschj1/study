@@ -90,7 +90,6 @@ public class Main {
         }
 
         if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
-
             return;
         }
 
@@ -104,13 +103,10 @@ public class Main {
             Bead nr;
             Bead nb;
 
-            int flag = RED;
-
             if (k == 0) {
                 if (red.c == blue.c && red.r > blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
-                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -119,7 +115,6 @@ public class Main {
                 if (red.r == blue.r && red.c < blue.c) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
-                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -129,7 +124,6 @@ public class Main {
                 if (red.c == blue.c && red.r < blue.r) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
-                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -139,7 +133,6 @@ public class Main {
                 if (red.r == blue.r && red.c > blue.c) {
                     nb = goBead(k, blue, BLUE);
                     nr = goBead(k, red, RED);
-                    flag = BLUE;
                 } else {
                     nr = goBead(k, red, RED);
                     nb = goBead(k, blue, BLUE);
@@ -152,13 +145,8 @@ public class Main {
 
             go(k, nr, nb, cnt + 1);
 
-            if (flag == RED) {
-                backToPrev(blue, nb, BLUE);
-                backToPrev(red, nr, RED);
-            } else {
-                backToPrev(red, nr, RED);
-                backToPrev(blue, nb, BLUE);
-            }
+            backToPrev(blue, nb, BLUE);
+            backToPrev(red, nr, RED);
         }
     }
 
