@@ -87,14 +87,18 @@ public class Main {
             }
             return;
 
-        } else if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
+        }
+
+        if (blue.r == def[HOLE].r && blue.c == def[HOLE].c) {
 
             return;
         }
 
         for (int k = 0; k < 4; k++) {
-            if (dir != -1 && (dir + 2) % 4 == k) {
-                continue;
+            if (dir != -1) {
+                if (dir == k || (dir + 2) % 4 == k) {
+                    continue;
+                }
             }
 
             Bead nr;
