@@ -19,7 +19,7 @@ public class Main {
     private static ArrayDeque<Rotate> rotates = new ArrayDeque<>();
     
     private static int sum = 0;
-    private static int cnt;
+    private static double cnt;
 
     public static void main(String[] args) throws Exception {
         inputData();
@@ -53,8 +53,6 @@ public class Main {
     }
 
     private static void solve() {
-        int cnt = 1;
-
         while (T-- > 0) {
             rotateDisk();
             findSameNumber();
@@ -100,7 +98,7 @@ public class Main {
 
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= M; j++) {
-                if (visit[i][j] == 0 && disks[i][j] != -1) {
+                if (visit[i][j] == 0 && disks[i][j] != DELETE) {
                     boolean tmp = bfs(i, j, visit);
 
                     if (!flag) {
@@ -111,11 +109,11 @@ public class Main {
         }
 
         if (!flag) {
-            int average = sum / cnt;
+            double average = sum / cnt;
 
             for (int i = 1; i <= N; i++) {
                 for (int j = 1; j <= M; j++) {
-                    if (disks[i][j] == -1) continue;
+                    if (disks[i][j] == DELETE) continue;
 
                     if (disks[i][j] > average) {
                         disks[i][j] -= 1;
@@ -161,7 +159,7 @@ public class Main {
                     q.add(nd);
                     q.add(ni);
                     visit[nd][ni] = 1;
-                    disks[nd][ni] = -1;
+                    disks[nd][ni] = DELETE;
                     sum -= num;
                     cnt -= 1;
                     found = true;
@@ -170,7 +168,8 @@ public class Main {
         }
 
         if (found) {
-            disks[disk][index] = -1;
+            /** 인접한 수에서 같은 수가 있는 경우, 시작한 수도 지우기 처리 */
+            disks[disk][index] = DELETE;
             sum -= num;
             cnt -= 1;
         }
