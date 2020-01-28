@@ -88,10 +88,6 @@ public class Dongwook {
                     continue;
                 }
 
-                if ((teamOneMask | (1 << adj)) == totalMask) {
-                    continue;
-                }
-
                 // Todo : adj 지역구를 teamOne에 추가함
                 int newMask = (teamOneMask | (1 << adj));
 
