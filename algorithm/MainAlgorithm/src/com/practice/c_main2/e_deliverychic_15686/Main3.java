@@ -18,6 +18,7 @@ public class Main3 {
     private static Point[] house;
     private static Point[] chick = new Point[13];
     private static Dist[][] distMap;
+    private static boolean[] checkChick = new boolean[13];
 
     private static int numHouse = 0;
     private static int numChicken = 0;
@@ -56,7 +57,7 @@ public class Main3 {
 
     private static void solve() {
         recordDistHouseFromChicken();
-        dfs(distMap, 0, 0, new boolean[numChicken]);
+        dfs(0, 0);
         System.out.println(min);
     }
 
@@ -72,17 +73,9 @@ public class Main3 {
         }
     }
 
-    private static void dfs(Dist[][] distMap, int cnt, int idx, boolean[] checkChick) {
+    private static void dfs(int cnt, int idx) {
         if (cnt == m) {
             int sum = 0;
-            for (Dist[] dists : distMap) {
-                for (Dist dist : dists) {
-                    if (checkChick[dist.idxChick]) {
-                        sum += dist.dist;
-                        break;
-                    }
-                }
-            }
 
             if (sum < min) {
                 min = sum;
@@ -90,14 +83,11 @@ public class Main3 {
             return;
         }
 
-        if (idx == numChicken) {
-            return;
+        for (int i = idx; i < numChicken; i++) {
+            checkChick[i] = true;
+            dfs(cnt + 1, i + 1);
+            checkChick[i] = false;
         }
-
-        checkChick[idx] = true;
-        dfs(distMap, cnt + 1, idx + 1, checkChick);
-        checkChick[idx] = false;
-        dfs(distMap, cnt, idx + 1, checkChick);
     }
 
 
