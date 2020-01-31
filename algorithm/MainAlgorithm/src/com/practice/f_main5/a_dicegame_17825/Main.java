@@ -7,7 +7,8 @@ public class Main {
 
     private static final int ARRIVE = -1;
 
-    private static final ArrayList<int[]> map = new ArrayList<>();
+    private static boolean[] visit = new boolean[41];
+
     private static int[][] pieces = new int[5][2];
     private static int[] diceResult = new int[10];
 
@@ -19,8 +20,6 @@ public class Main {
     }
 
     private static void inputData() throws Exception {
-        prepareMapInfo();
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -30,21 +29,17 @@ public class Main {
         br.close();
     }
 
-    private static void prepareMapInfo() {
-        map.add(new int[]{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40});
-        map.add(new int[]{10, 13, 16, 19, 25, 30, 35, 40});
-        map.add(new int[]{20, 22, 24, 25, 30, 35, 40});
-        map.add(new int[]{30, 28, 27, 26, 25, 30, 35, 40});
-    }
-
     private static void solve() {
         go(0, 0, 0);
+        Test.print();
         System.out.println(answer);
     }
 
     private static void go(int piece, int cnt, int sum) {
 
         if (cnt >= 10) {
+            Test.write(diceResult);
+
             if (answer < sum) answer = sum;
             return;
         }
@@ -69,52 +64,45 @@ public class Main {
 
             if (nPath == 0) {
                 // Todo : 윷판의 외곽 경로로 가고 있던 경우
-                if (nIdx != 20 && nIdx % 5 == 0) {
+                if (0 < nIdx && nIdx < 20 && nIdx % 5 == 0) {
                     // Todo : 파란원을 만나는 경우
                     nPath = nIdx / 5;
                     nIdx = 0;
                 }
             }
 
-            if (nIdx >= map.get(nPath).length) {
+            if (nIdx >= Map.getPathDest(nPath)) {
 
                 // Todo : 도착지에 도착한 경우
                 pieces[p][0] = nPath;
                 pieces[p][1] = ARRIVE;
+                visit[Map.getPathIdx(path, idx)] = false;
+                Test.record(cnt, p, nPath, ARRIVE, 0, sum);
                 go(nPiece, cnt + 1, sum);
+                visit[Map.getPathIdx(path, idx)] = true;
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
 
-            } else if (!checkExistPiece(p, nPiece, nPath, nIdx)) {
+            } else if (!checkExistPiece(Map.getPathIdx(nPath, nIdx))) {
 
                 // Todo : 도착지에 도착하지 않은 경우
                 pieces[p][0] = nPath;
                 pieces[p][1] = nIdx;
-                go(nPiece, cnt + 1, sum + map.get(nPath)[nIdx]);
+                visit[Map.getPathIdx(nPath, nIdx)] = true;
+                visit[Map.getPathIdx(path, idx)] = false;
+                Test.record(cnt, p, nPath, nIdx, Map.getPathIdx(nPath, nIdx), sum + Map.getPathIdx(nPath, nIdx));
+                go(nPiece, cnt + 1, sum + Map.getPathIdx(nPath, nIdx));
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
+                visit[Map.getPathIdx(nPath, nIdx)] = false;
+                visit[Map.getPathIdx(path, idx)] = true;
             }
         }
     }
 
-    private static boolean checkExistPiece(int piece, int pieceCnt, int path, int idx) {
-        // Todo : 이동시켜려는 위치에 다른 말이 있는지 유무
-        for (int i = 1; i <= pieceCnt; i++) {
-
-            // Todo : 비교하려는 말이 1) 현재 말이거나 2) 이미 도착지에 도달한 경우는 제외
-            if (piece == i || pieces[i][1] == ARRIVE) continue;
-
-            if (pieces[i][0] == path && pieces[i][1] == idx) {
-                // Todo : 비교하려는 말과 현재 말이 같은 위치에 있는 경우
-                return true;
-
-            } else if (idx == map.get(path).length - 1) {
-                // Todo : 40점 위치는 따로 고려해야 한다.
-                if (pieces[i][1] == map.get(pieces[i][0]).length - 1) {
-                    // Todo : 현재 말과 비교하려는 말의 경로의 idx가 경로 배열의 끝 index이면 둘 다 40점에 위치
-                    return true;
-                }
-            }
+    private static boolean checkExistPiece(int score) {
+        if (visit[score]) {
+            return true;
         }
         return false;
     }
@@ -122,6 +110,83 @@ public class Main {
     private static int s2i(String s) {
         return Integer.parseInt(s);
     }
+}
+
+class Map {
+
+    static final int[] destinationIdx = {21, 8, 7, 8};
+
+    static final int[] path0 = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40};
+    static final int[] path1 = {10, 13, 16, 19, 25, 30, 35, 40};
+    static final int[] path2 = {20, 22, 24, 25, 30, 35, 40};
+    static final int[] path3 = {30, 28, 27, 26, 25, 30, 35, 40};
+
+    static int getPathIdx(int path, int idx) {
+        if (path == 0) return path0[idx];
+        else if (path == 1) return path1[idx];
+        else if (path == 2) return path2[idx];
+        else /*if (path == 3) */ return path3[idx];
+
+    }
+
+    static int getPathDest(int path) {
+        return destinationIdx[path];
+    }
+}
+
+class Test {
+    static BufferedOutputStream bs;
+    static int[][] test = new int[10][5];
+
+    static {
+        try {
+            bs = new BufferedOutputStream(new FileOutputStream("/Users/hyunjun/Documents/output.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void print() {
+        try {
+            bs.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bs.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static void write(int[] diceResult) {
+        for (int i = 0; i < 10; i++) {
+            int move = diceResult[i];
+            int tp = test[i][0];
+            int tPath = test[i][1];
+            int tIdx = test[i][2];
+            int tCur = test[i][3];
+            int tSum = test[i][4];
+
+            String str = String.format("%d 번째 : move = %d, 말 = %d, 경로 = %d, 위치 = %d, 현재 얻은 점수 = %d, 현재 총점 = %d\n", i+1, move, tp, tPath, tIdx, tCur, tSum);
+            try {
+                bs.write(str.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static void record(int cnt, int p, int path, int idx, int cur, int sum) {
+        test[cnt][0] = p;
+        test[cnt][1] = path;
+        test[cnt][2] = idx;
+        test[cnt][3] = cur;
+        test[cnt][4] = sum;
+    }
+
+
 }
 
 
