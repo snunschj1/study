@@ -5,16 +5,6 @@ import java.io.*;
 
 public class Main {
 
-    private static BufferedOutputStream bs;
-
-    static {
-        try {
-            bs = new BufferedOutputStream(new FileOutputStream("/Users/hyunjun/Documents/output.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     private static final int ARRIVE = -1;
 
     private static final ArrayList<int[]> map = new ArrayList<>();
@@ -22,8 +12,6 @@ public class Main {
     private static int[] diceResult = new int[10];
 
     private static int answer = 0;
-
-    private static int[][] test = new int[10][5];
 
     public static void main(String[] args) throws Exception {
         inputData();
@@ -39,7 +27,6 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             diceResult[i] = s2i(st.nextToken());
         }
-
         br.close();
     }
 
@@ -52,40 +39,12 @@ public class Main {
 
     private static void solve() {
         go(0, 0, 0);
-        try {
-            bs.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                bs.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         System.out.println(answer);
     }
 
     private static void go(int piece, int cnt, int sum) {
 
         if (cnt >= 10) {
-
-            for (int i = 0; i < 10; i++) {
-                int move = diceResult[i];
-                int tp = test[i][0];
-                int tPath = test[i][1];
-                int tIdx = test[i][2];
-                int tCur = test[i][3];
-                int tSum = test[i][4];
-
-                String str = String.format("%d 번째 : move = %d, 말 = %d, 경로 = %d, 위치 = %d, 현재 얻은 점수 = %d, 현재 총점 = %d\n", i+1, move, tp, tPath, tIdx, tCur, tSum);
-                try {
-                    bs.write(str.getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-//                System.out.printf("%d 번째 : move = %d, 말 = %d, 경로 = %d, 위치 = %d, 현재 얻은 점수 = %d, 현재 총점 = %d\n", i+1, move, tp, tPath, tIdx, tCur, tSum);
-            }
             if (answer < sum) answer = sum;
             return;
         }
@@ -122,8 +81,6 @@ public class Main {
                 // Todo : 도착지에 도착한 경우
                 pieces[p][0] = nPath;
                 pieces[p][1] = ARRIVE;
-
-                test(cnt, p, nPath, ARRIVE, 0, sum);
                 go(nPiece, cnt + 1, sum);
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
@@ -133,8 +90,6 @@ public class Main {
                 // Todo : 도착지에 도착하지 않은 경우
                 pieces[p][0] = nPath;
                 pieces[p][1] = nIdx;
-
-                test(cnt, p, nPath, nIdx, map.get(nPath)[nIdx], sum + + map.get(nPath)[nIdx]);
                 go(nPiece, cnt + 1, sum + map.get(nPath)[nIdx]);
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
@@ -143,12 +98,22 @@ public class Main {
     }
 
     private static boolean checkExistPiece(int piece, int pieceCnt, int path, int idx) {
+        // Todo : 이동시켜려는 위치에 다른 말이 있는지 유무
         for (int i = 1; i <= pieceCnt; i++) {
-            // Todo : 이동시켜려는 위치에 다른 말이 있는지 유무
-            if (piece == i) continue;
+
+            // Todo : 비교하려는 말이 1) 현재 말이거나 2) 이미 도착지에 도달한 경우는 제외
+            if (piece == i || pieces[i][1] == ARRIVE) continue;
 
             if (pieces[i][0] == path && pieces[i][1] == idx) {
+                // Todo : 비교하려는 말과 현재 말이 같은 위치에 있는 경우
                 return true;
+
+            } else if (idx == map.get(path).length - 1) {
+                // Todo : 40점 위치는 따로 고려해야 한다.
+                if (pieces[i][1] == map.get(pieces[i][0]).length - 1) {
+                    // Todo : 현재 말과 비교하려는 말의 경로의 idx가 경로 배열의 끝 index이면 둘 다 40점에 위치
+                    return true;
+                }
             }
         }
         return false;
@@ -157,13 +122,6 @@ public class Main {
     private static int s2i(String s) {
         return Integer.parseInt(s);
     }
-
-    private static void test(int cnt, int p, int path, int idx, int cur, int sum) {
-        test[cnt][0] = p;
-        test[cnt][1] = path;
-        test[cnt][2] = idx;
-        test[cnt][3] = cur;
-        test[cnt][4] = sum;
-    }
 }
+
 
