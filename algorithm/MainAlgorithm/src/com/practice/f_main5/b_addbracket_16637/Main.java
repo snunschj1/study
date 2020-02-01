@@ -12,7 +12,7 @@ public class Main {
 
     private static ArrayDeque<Integer> num = new ArrayDeque<>();
     private static ArrayDeque<Character> operator = new ArrayDeque<>();
-    private static long answer = 0;
+    private static long answer = - Integer.MAX_VALUE;
 
     public static void main(String[] args) throws Exception {
         inputData();
