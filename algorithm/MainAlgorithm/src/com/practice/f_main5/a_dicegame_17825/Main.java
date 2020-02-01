@@ -7,8 +7,6 @@ public class Main {
 
     private static final int ARRIVE = -1;
 
-    private static boolean[] visit = new boolean[41];
-
     private static int[][] pieces = new int[5][2];
     private static int[] diceResult = new int[10];
 
@@ -31,15 +29,12 @@ public class Main {
 
     private static void solve() {
         go(0, 0, 0);
-        Test.print();
         System.out.println(answer);
     }
 
     private static void go(int piece, int cnt, int sum) {
 
         if (cnt >= 10) {
-            Test.write(diceResult);
-
             if (answer < sum) answer = sum;
             return;
         }
@@ -51,6 +46,8 @@ public class Main {
             int path = pieces[p][0];
             int idx = pieces[p][1];
             if (idx == ARRIVE) continue;
+
+            int curScoreIndex = Map.getScoreIndex(path, idx);
 
             // Todo : 새로운 말이면 piece + 1;
             int nPiece = piece;
@@ -71,40 +68,35 @@ public class Main {
                 }
             }
 
-            if (nIdx >= Map.getPathDest(nPath)) {
+            if (nIdx >= Map.getLength(nPath)) {
 
                 // Todo : 도착지에 도착한 경우
                 pieces[p][0] = nPath;
                 pieces[p][1] = ARRIVE;
-                visit[Map.getPathIdx(path, idx)] = false;
-                Test.record(cnt, p, nPath, ARRIVE, 0, sum);
+                Map.setCheck(curScoreIndex, false);
                 go(nPiece, cnt + 1, sum);
-                visit[Map.getPathIdx(path, idx)] = true;
+                Map.setCheck(curScoreIndex, true);
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
 
-            } else if (!checkExistPiece(Map.getPathIdx(nPath, nIdx))) {
+            } else if (!Map.isChecked(Map.getScoreIndex(nPath, nIdx))) {
 
                 // Todo : 도착지에 도착하지 않은 경우
+
+                int nextScoreIndex = Map.getScoreIndex(nPath, nIdx);
+                int nextScore = Map.getScore(nextScoreIndex);
+
                 pieces[p][0] = nPath;
                 pieces[p][1] = nIdx;
-                visit[Map.getPathIdx(nPath, nIdx)] = true;
-                visit[Map.getPathIdx(path, idx)] = false;
-                Test.record(cnt, p, nPath, nIdx, Map.getPathIdx(nPath, nIdx), sum + Map.getPathIdx(nPath, nIdx));
-                go(nPiece, cnt + 1, sum + Map.getPathIdx(nPath, nIdx));
+                Map.setCheck(nextScoreIndex, true);
+                Map.setCheck(curScoreIndex, false);
+                go(nPiece, cnt + 1, sum + nextScore);
                 pieces[p][0] = path;
                 pieces[p][1] = idx;
-                visit[Map.getPathIdx(nPath, nIdx)] = false;
-                visit[Map.getPathIdx(path, idx)] = true;
+                Map.setCheck(nextScoreIndex, false);
+                Map.setCheck(curScoreIndex, true);
             }
         }
-    }
-
-    private static boolean checkExistPiece(int score) {
-        if (visit[score]) {
-            return true;
-        }
-        return false;
     }
 
     private static int s2i(String s) {
@@ -114,23 +106,47 @@ public class Main {
 
 class Map {
 
-    static final int[] destinationIdx = {21, 8, 7, 8};
+    // 윷놀이 판
+    static final int[] score = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40,
+                                  13, 16, 19, 25, 30, 35, 22, 24, 28, 27, 26};
 
-    static final int[] path0 = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40};
-    static final int[] path1 = {10, 13, 16, 19, 25, 30, 35, 40};
-    static final int[] path2 = {20, 22, 24, 25, 30, 35, 40};
-    static final int[] path3 = {30, 28, 27, 26, 25, 30, 35, 40};
+    // 윷놀이 칸에 말이 있는지 여부
+    static final boolean[] check = new boolean[32];
 
-    static int getPathIdx(int path, int idx) {
+    // 가능한 경로
+    static final int[] path0 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    static final int[] path1 = {5, 21, 22, 23, 24, 25, 26, 20};
+    static final int[] path2 = {10, 27, 28, 24, 25, 26, 20};
+    static final int[] path3 = {15, 29, 30, 31, 24, 25, 26, 20};
+
+    // 가능한 경로에 따른 도착
+    static final int[] length = {21, 8, 7, 8};
+
+    // 경로 & 경로의 index에 따른 윷놀이판 index
+    static int getScoreIndex(int path, int idx) {
         if (path == 0) return path0[idx];
         else if (path == 1) return path1[idx];
         else if (path == 2) return path2[idx];
         else /*if (path == 3) */ return path3[idx];
-
     }
 
-    static int getPathDest(int path) {
-        return destinationIdx[path];
+    // 윷놀이판 index에 따른 점수
+    static int getScore(int scoreIndex) {
+        return score[scoreIndex];
+    }
+
+    // 해당 윷놀이 칸에 말이 있는지
+    static boolean isChecked(int scoreIndex) {
+        return check[scoreIndex];
+    }
+
+    static void setCheck(int scoreIndex, boolean isChecked) {
+        check[scoreIndex] = isChecked;
+    }
+
+    // 경로마다 언제가 도착인지 
+    static int getLength(int path) {
+        return length[path];
     }
 }
 
@@ -185,8 +201,6 @@ class Test {
         test[cnt][3] = cur;
         test[cnt][4] = sum;
     }
-
-
 }
 
 
