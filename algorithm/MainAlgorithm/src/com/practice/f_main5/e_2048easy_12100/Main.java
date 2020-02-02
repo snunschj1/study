@@ -57,17 +57,11 @@ public class Main {
     }
 
     private static void decideDirections(int cnt) {
+        // 5개의 방향 조합을 만드는 재귀식
+
         if (cnt >= 5) {
-
-            // Todo : test
-            Test.printStr("==== START ====\n");
-            Test.printMap(map, N);
-
             adaptDirections();
             if (answer < defaultMax) {
-
-                // Todo : test
-                Test.printStr("MAX = " + defaultMax + "\n");
                 answer = defaultMax;
             }
             return;
@@ -80,20 +74,17 @@ public class Main {
     }
 
     private static void adaptDirections() {
+        // 조합이 완성되면 5번의 방향을 순차적으로 실행하는 로직
         tMap = copyMap(N);
 
         for (int d = 0; d < 5; d++) {
             unite = new int[N][N];
             moveBlocks(dirs[d]);
-
-            // Todo : test
-            Test.printStr((d + 1) + "번 움직임 : ");
-            Test.printDir(dirs[d]);
-            Test.printMap(tMap, N);
         }
     }
 
     private static void moveBlocks(int dir) {
+        // 방향에 따라 블록들을 움직이기 위해, 처음에 움직일 블록과 마지막에 움직일 블록 결정
         int s;
         int e;
 
@@ -123,6 +114,8 @@ public class Main {
 
         }
     }
+
+    /** moveBlocks{dir} : 빈칸을 제외하고 블록을 움직인다. */
 
     private static void moveBlocksUP(int start, int end, int dir) {
         for (int c = 0; c < N; c++) {
@@ -163,6 +156,8 @@ public class Main {
     }
 
     private static void moveBlock(int r, int c, int dir) {
+        // 블록을 방향에 따라 한 칸씩 다음 블록과 비교
+
         int cr = r;
         int cc = c;
         int mr = r + dr[dir];
@@ -170,13 +165,19 @@ public class Main {
 
         while (check(mr, mc)) {
             if (tMap[mr][mc] == 0) {
+                // 다음 블록이 빈칸이면 자리를 바꾼다.
                 swap(cr, cc, mr, mc);
             } else if (tMap[mr][mc] != tMap[cr][cc]) {
+                // 다음 블록과 현재 블록이 숫자가 다르면 멈춘다.
                 break;
             } else if (tMap[mr][mc] == tMap[cr][cc]) {
+                // 다음 블록과 현재 블록의 숫자가 같은 경우
+
                 if (unite[cr][cc] == 1 || unite[mr][mc] == 1) {
+                    // 현재 블록 혹은 다음 블록이 이미 합쳐진 블록이면 멈춘다.
                     break;
                 } else {
+                    // 아니라면, 합쳐준다. 합칠때마다 최대값 비교
                     int uniteNum = tMap[mr][mc] + tMap[cr][cc];
                     tMap[mr][mc] = uniteNum;
                     if (tMap[mr][mc] > defaultMax) defaultMax = tMap[mr][mc];
@@ -205,6 +206,7 @@ public class Main {
         tMap[cr][cc] = tMap[mr][mc];
         tMap[mr][mc] = tmp;
 
+        // 자리 바꿔주면, 이미 합쳐진 타일 여부 정보도 자리 바꿔줘야 한다. 
         int tmpU = unite[cr][cc];
         unite[cr][cc] = unite[mr][mc];
         unite[mr][mc] = tmpU;
