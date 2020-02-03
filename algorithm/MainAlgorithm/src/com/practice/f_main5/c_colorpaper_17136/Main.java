@@ -3,6 +3,9 @@ package com.practice.f_main5.c_colorpaper_17136;
 import java.util.*;
 import java.io.*;
 
+/**
+ * 틀린 풀이
+ */
 public class Main {
 
     private static final int ATTATCH = 2;

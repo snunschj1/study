@@ -206,7 +206,7 @@ public class Main {
         tMap[cr][cc] = tMap[mr][mc];
         tMap[mr][mc] = tmp;
 
-        // 자리 바꿔주면, 이미 합쳐진 타일 여부 정보도 자리 바꿔줘야 한다. 
+        // 자리 바꿔주면, 이미 합쳐진 타일 여부 정보도 자리 바꿔줘야 한다
         int tmpU = unite[cr][cc];
         unite[cr][cc] = unite[mr][mc];
         unite[mr][mc] = tmpU;
