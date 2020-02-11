@@ -59,11 +59,7 @@ public class Main2 {
 
         if (floor >= D) {
             if (check()) {
-
-                if (ans > inserCnt) {
-                    ans = inserCnt;
-                }
-
+                ans = inserCnt;
             }
             return;
         }
