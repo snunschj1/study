@@ -12,7 +12,6 @@ public class Main {
     private static int T, D, W, K;
     private static int[][] film;
     private static int[][] tFilm;
-    private static int[][] visit;
     private static int[] combination;
     private static int answer;
 
@@ -34,11 +33,6 @@ public class Main {
             K = s2i(st.nextToken());
 
             film = new int[D][W];
-
-            visit = new int[D+1][W];
-            for (int i = 0; i < D + 1; i++) {
-                Arrays.fill(visit[i], -1);
-            }
 
             combination = new int[D];
             Arrays.fill(combination, -1);
@@ -69,11 +63,11 @@ public class Main {
 
     private static void makeCombination(int index, int cnt, int[] c) {
 
-        if (index >= D) {
+        if (answer <= cnt) {
+            return;
+        }
 
-            if (answer < cnt) {
-                return;
-            }
+        if (index >= D) {
 
             tFilm = copyMap(film);
             adaptChemical(tFilm, c);
@@ -86,18 +80,12 @@ public class Main {
             return;
         }
 
-        if (answer < cnt) {
-            return;
-        }
-
         c[index] = -1;
         makeCombination(index + 1, cnt, c);
         c[index] = 1;
         makeCombination(index + 1, cnt + 1, c);
         c[index] = 0;
         makeCombination(index + 1, cnt + 1, c);
-
-
     }
 
     private static void adaptChemical(int[][] film, int[] c) {
