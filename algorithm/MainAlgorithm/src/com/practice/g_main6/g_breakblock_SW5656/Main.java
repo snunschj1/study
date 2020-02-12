@@ -15,7 +15,6 @@ public class Main {
 
     private static int[] combination;
     private static Queue<Block> bombs;      // 한 번 구슬 쏠 때마다, 첫 파괴될 블록과 그로 인해서 연쇄적으로 폭파되는 블록 중 숫자가 2 이상인 것을 담는 큐
-    private static ArrayList<Integer> remains;      // 한 번 구슬 쏠 때마다, 남은 블록들 밑으로 내리기 위해서 남은 블록들만 임시로 담는 리스트
 
     private static int brokenBlocks;
     private static int totalBlocks;
@@ -154,25 +153,20 @@ public class Main {
     private static void moveRemainBlocks() {
 
         for (int c = 0; c < W; c++) {
-            remains = new ArrayList<>();
+
+            int index = H - 1;
 
             for (int r = H - 1; r >= 0; r--) {  // Todo : 열의 마지막 행부터 0행까지 검토
                 if (tMap[r][c] != 0) {
-                    remains.add(tMap[r][c]);
+                    tMap[index--][c] = tMap[r][c];
                 }
             }
 
-            for (int i = 0; i < remains.size(); i++) {
-                // Todo : 남아있는 블록을 마지막 행부터 채워준다.
-                tMap[H - i - 1][c] = remains.get(i);
-            }
-
-            for (int i = 0; i < H - remains.size(); i++) {
+            for (int r = 0; r <= index; r++) {
                 // Todo : 남아있는 블록을 다 채운 뒤, 나머지는 0으로 채운다.
-                tMap[i][c] = 0;
+                tMap[r][c] = 0;
             }
         }
-
     }
 
     private static int[][] copyMap(int[][] original) {
