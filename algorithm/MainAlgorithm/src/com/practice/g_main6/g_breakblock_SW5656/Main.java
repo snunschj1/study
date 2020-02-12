@@ -12,7 +12,6 @@ public class Main {
 
     private static int[][] map;
     private static int[][] tMap;    // 각 조합마다 사용할 map
-    private static int[][] visit;   // 각 조합의 구슬 쏘는 것마다 사용한 visit 배열 (-1 = 이번에 폭파되는 블록)
 
     private static int[] combination;
     private static Queue<Block> bombs;      // 한 번 구슬 쏠 때마다, 첫 파괴될 블록과 그로 인해서 연쇄적으로 폭파되는 블록 중 숫자가 2 이상인 것을 담는 큐
@@ -89,8 +88,6 @@ public class Main {
         for (int n = 0; n < N; n++) {
             // Todo : N 번 구슬을 쏜다
 
-            visit = copyMap(tMap);
-
             int start = combination[n];     // 구슬을 쏘는 열
 
             for (int r = 0; r < H; r++) {
@@ -99,7 +96,6 @@ public class Main {
                     // Todo : 해당 열의 가장 위의 블록
 
                     breakBlock(new Block(r, start, tMap[r][start]));
-
                     moveRemainBlocks();
                     break;
                 }
@@ -114,7 +110,7 @@ public class Main {
     private static void breakBlock(Block start) {
         bombs = new LinkedList<>();
         bombs.add(start);
-        visit[start.r][start.c] = -1;
+        tMap[start.r][start.c] = 0;
         brokenBlocks++;
 
         while (!bombs.isEmpty()) {
@@ -141,16 +137,14 @@ public class Main {
                 nc += dc[k];
 
                 if (0 > nr || nr >= H || 0 > nc || nc >= W) break; // 범위 밖
-                if (tMap[nr][nc] == 0) continue;  // 블록이 없는 경우
-
-                if (visit[nr][nc] == -1) continue; // 이미 파괴된 블록
+                if (tMap[nr][nc] == 0) continue;  // 블록이 없거나 이미 파괴된 경우
 
                 if (tMap[nr][nc] == 1) { // 블록의 숫자가 1인 경우, visit 처리와 brokenBlocks++ 만 한다.
-                    visit[nr][nc] = -1;
+                    tMap[nr][nc] = 0;
                     brokenBlocks++;
                 } else {
                     bombs.add(new Block(nr, nc, tMap[nr][nc])); // 그 외의 숫자는 연쇄작용이 일어나므로, 큐에 추가한다.
-                    visit[nr][nc] = -1;
+                    tMap[nr][nc] = 0;
                     brokenBlocks++;
                 }
             }
@@ -158,17 +152,12 @@ public class Main {
     }
 
     private static void moveRemainBlocks() {
-        for (int c = 0; c < W; c++) {
 
+        for (int c = 0; c < W; c++) {
             remains = new ArrayList<>();
 
-            for (int r = H - 1; r >= 0; r--) {
-                // Todo : 각 열의 마지막 행부터 0행까지 검토
-
-                if (tMap[r][c] == 0) break;
-
-                if (visit[r][c] != -1) {
-                    // Todo : 남아 있는 블록만 담는다.
+            for (int r = H - 1; r >= 0; r--) {  // Todo : 열의 마지막 행부터 0행까지 검토
+                if (tMap[r][c] != 0) {
                     remains.add(tMap[r][c]);
                 }
             }
@@ -183,18 +172,17 @@ public class Main {
                 tMap[i][c] = 0;
             }
         }
+
     }
 
-    private static int[][] copyMap(int[][] a) {
-        int[][] tmp = new int[a.length][a[0].length];
+    private static int[][] copyMap(int[][] original) {
+        int[][] copy = new int[original.length][original[0].length];
 
-        for (int r = 0; r < a.length; r++) {
-            for (int c = 0; c < a[0].length; c++) {
-                tmp[r][c] = a[r][c];
-            }
+        for (int r = 0; r < original.length; r++) {
+            copy[r] = Arrays.copyOf(original[r], original[r].length);
         }
 
-        return tmp;
+        return copy;
     }
 
     private static int s2i(String s) {
